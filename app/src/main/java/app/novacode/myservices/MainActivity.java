@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton     = (Button)   findViewById(R.id.loginButton);
 
         passwordLogin   = (EditText) findViewById(R.id.passwordLogin);
-        passwordLogin.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        passwordLogin.setInputType(129);
 
         emailLogin      = (EditText) findViewById(R.id.emailLogin);
         emailLogin.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
