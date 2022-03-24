@@ -3,7 +3,7 @@
  * This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
  */
 
-package app.novacode.myservices.pages.lostpassword;
+package app.novacode.myservices.pages.recovery;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -14,10 +14,13 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/list_rol_users.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rectangle_decorator_button.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/spinner_theme.xml" value="0.153" />
         <entry key="app/src/main/res/layout/activity_const_design.xml" value="0.16927083333333334" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_password_recovery.xml" value="0.15520833333333334" />
-        <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/activity_sign_up_client.xml" value="0.15579710144927536" />
+        <entry key="app/src/main/res/layout/activity_sign_up_seller.xml" value="0.15579710144927536" />
+        <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/circle_botton_widget.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/circle_top_widget.xml" value="0.16927083333333334" />
       </map>

@@ -6,10 +6,45 @@
     <string name="login_return">Login —></string>
     <string name="password_recover">Lost your password ?</string>
     <string name="login_text">LOGIN</string>
+    <string name="create_account">CREATE</string>
     <string name="fist_name_hint">First Name:</string>
     <string name="second_name_hint">Second Name:</string>
     <string name="email_hint">Email:</string>
     <string name="password_hint">Password:</string>
+    <string name="re_password_hint">Re Password:</string>
     <string name="nex_step">Next —></string>
     <string name="dev_nick">Dev. Novacode</string>
+
+    <string-array name="rol_user">
+        <item>Select Rol....</item>
+        <item>Client</item>
+        <item>Seller</item>
+    </string-array>
+
+
+<!--    <string-array name="city">-->
+<!--        <item>New Zealand</item>-->
+<!--        <item>North Island</item>-->
+<!--        <item>Northland</item>-->
+<!--        <item>Auckland</item>-->
+<!--        <item>Waikato</item>-->
+<!--        <item>Bay of Plenty</item>-->
+<!--        <item>Gisborne</item>-->
+<!--        <item>Hawke's Bay</item>-->
+<!--        <item>Taranaki</item>-->
+<!--        <item>Whanganui</item>-->
+<!--        <item>Manawatu</item>-->
+<!--        <item>Wairarapa</item>-->
+<!--        <item>Wellington</item>-->
+<!--        <item>South Island</item>-->
+<!--        <item>Nelson Bays</item>-->
+<!--        <item>Marlborough</item>-->
+<!--        <item>West Coast</item>-->
+<!--        <item>Canterbury</item>-->
+<!--        <item>Timaru - Oamaru</item>-->
+<!--        <item>Otago</item>-->
+<!--        <item>Southland</item>-->
+<!--    </string-array>-->
+
+
 </resources>

@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import app.novacode.myservices.pages.lostpassword.PasswordRecovery;
+import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SingUp;
 
 public class MainActivity extends AppCompatActivity {
