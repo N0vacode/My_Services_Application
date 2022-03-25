@@ -4,26 +4,24 @@
   ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".pages.signup.SignUpClient">
-
-
-
+    tools:context=".pages.signup.SignUpSellerBusiness">
 
     <include
         android:id="@+id/constDesing"
         layout="@layout/activity_const_design" />
 
 
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -47,7 +45,7 @@
                     android:orientation="horizontal" />
 
                 <Spinner
-                    android:id="@+id/selectCityClien"
+                    android:id="@+id/rolUser"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
@@ -57,49 +55,51 @@
                     android:textColorHint="@color/text_hint" />
 
                 <EditText
-                    android:id="@+id/phoneClient"
+                    android:id="@+id/firsName"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/edittext_theme"
-                    android:hint="@string/phone_number"
+                    android:hint="@string/business_name"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/passwordClient"
+                    android:id="@+id/secondName"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/edittext_theme"
-                    android:hint="@string/password_hint"
+                    android:hint="@string/business_web"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
-                <EditText
-                    android:id="@+id/rePasswordClient"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/edittext_theme"
-                    android:hint="@string/re_password_hint"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="20dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/emailSignUp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/edittext_theme"
+                        android:hint="@string/about_yout_business"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="20dp" />
 
+                    <ImageView
+                        android:id="@+id/uploadBusinessImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/photo_business" />
 
-                <Button
-                    android:id="@+id/createAccountClient"
-                    android:layout_width="120dp"
-                    android:layout_height="60dp"
-                    android:layout_below="@+id/passwordRecover"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rectangle_decorator_button"
-                    android:text="@string/create_account"
-                    android:textSize="25dp" />
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>

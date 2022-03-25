@@ -13,6 +13,10 @@
     <string name="password_hint">Password:</string>
     <string name="phone_number">Phone:</string>
     <string name="re_password_hint">Re Password:</string>
+    <string name="business_name">Business Name:</string>
+    <string name="business_web">Business Web Site:</string>
+    <string name="about_yout_business">About Your Business:</string>
+
     <string name="nex_step">Next —></string>
     <string name="dev_nick">Dev. Novacode</string>
 
@@ -22,29 +26,29 @@
     </string-array>
 
 
-<!--    <string-array name="city">-->
-<!--        <item>New Zealand</item>-->
-<!--        <item>North Island</item>-->
-<!--        <item>Northland</item>-->
-<!--        <item>Auckland</item>-->
-<!--        <item>Waikato</item>-->
-<!--        <item>Bay of Plenty</item>-->
-<!--        <item>Gisborne</item>-->
-<!--        <item>Hawke's Bay</item>-->
-<!--        <item>Taranaki</item>-->
-<!--        <item>Whanganui</item>-->
-<!--        <item>Manawatu</item>-->
-<!--        <item>Wairarapa</item>-->
-<!--        <item>Wellington</item>-->
-<!--        <item>South Island</item>-->
-<!--        <item>Nelson Bays</item>-->
-<!--        <item>Marlborough</item>-->
-<!--        <item>West Coast</item>-->
-<!--        <item>Canterbury</item>-->
-<!--        <item>Timaru - Oamaru</item>-->
-<!--        <item>Otago</item>-->
-<!--        <item>Southland</item>-->
-<!--    </string-array>-->
+    <!--    <string-array name="city">-->
+    <!--        <item>New Zealand</item>-->
+    <!--        <item>North Island</item>-->
+    <!--        <item>Northland</item>-->
+    <!--        <item>Auckland</item>-->
+    <!--        <item>Waikato</item>-->
+    <!--        <item>Bay of Plenty</item>-->
+    <!--        <item>Gisborne</item>-->
+    <!--        <item>Hawke's Bay</item>-->
+    <!--        <item>Taranaki</item>-->
+    <!--        <item>Whanganui</item>-->
+    <!--        <item>Manawatu</item>-->
+    <!--        <item>Wairarapa</item>-->
+    <!--        <item>Wellington</item>-->
+    <!--        <item>South Island</item>-->
+    <!--        <item>Nelson Bays</item>-->
+    <!--        <item>Marlborough</item>-->
+    <!--        <item>West Coast</item>-->
+    <!--        <item>Canterbury</item>-->
+    <!--        <item>Timaru - Oamaru</item>-->
+    <!--        <item>Otago</item>-->
+    <!--        <item>Southland</item>-->
+    <!--    </string-array>-->
 
 
 </resources>
