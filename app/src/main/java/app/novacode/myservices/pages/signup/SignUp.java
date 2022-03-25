@@ -2,23 +2,19 @@ package app.novacode.myservices.pages.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import app.novacode.myservices.MainActivity;
 import app.novacode.myservices.R;
 
-public class SingUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     TextView returnLogin;
     TextView nextLogin;
@@ -50,7 +46,11 @@ public class SingUp extends AppCompatActivity implements AdapterView.OnItemSelec
         returnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(loginActivityIntent);
+
+
+
             }
         });
 
@@ -79,7 +79,7 @@ public class SingUp extends AppCompatActivity implements AdapterView.OnItemSelec
         if(adapterView.getItemAtPosition(i).equals("Client") || adapterView.getItemAtPosition(i).equals("Seller")){
 
         }else{
-            Toast.makeText(SingUp.this,"Shoulbe select a rol",Toast.LENGTH_LONG ).show();
+            Toast.makeText(SignUp.this,"Shoulbe select a rol",Toast.LENGTH_LONG ).show();
         }
 
 

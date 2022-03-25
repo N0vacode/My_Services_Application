@@ -11,12 +11,12 @@
     <string name="second_name_hint">Second Name:</string>
     <string name="email_hint">Email:</string>
     <string name="password_hint">Password:</string>
+    <string name="phone_number">Phone:</string>
     <string name="re_password_hint">Re Password:</string>
     <string name="nex_step">Next —></string>
     <string name="dev_nick">Dev. Novacode</string>
 
     <string-array name="rol_user">
-        <item>Select Rol....</item>
         <item>Client</item>
         <item>Seller</item>
     </string-array>

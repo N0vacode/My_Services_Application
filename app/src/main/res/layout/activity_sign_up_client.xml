@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) $2019 NovaCode All Rights Reserved
+  ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
+  -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".pages.signup.SignUp">
+    tools:context=".pages.signup.SignUpClient">
+
+
 
 
     <include
         android:id="@+id/constDesing"
         layout="@layout/activity_const_design" />
 
-    <TextView
-        android:id="@+id/returnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/login_return"
-        android:textColor="@color/purple_700"
-        android:textSize="20dp" />
-
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/returnLogin">
+        android:layout_marginTop="30dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -42,7 +38,6 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/main_icon_login"
                     android:layout_width="180dp"
                     android:layout_height="180dp"
                     android:layout_gravity="center"
@@ -52,7 +47,7 @@
                     android:orientation="horizontal" />
 
                 <Spinner
-                    android:id="@+id/rolUser"
+                    android:id="@+id/selectCity"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
@@ -62,48 +57,50 @@
                     android:textColorHint="@color/text_hint" />
 
                 <EditText
-                    android:id="@+id/firsName"
+                    android:id="@+id/phoneSignUp"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/edittext_theme"
-                    android:hint="@string/fist_name_hint"
+                    android:hint="@string/phone_number"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/secondName"
+                    android:id="@+id/passwordSignUp"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/edittext_theme"
-                    android:hint="@string/second_name_hint"
+                    android:hint="@string/password_hint"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/emailSignUp"
+                    android:id="@+id/rePasswordSignUp"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/edittext_theme"
-                    android:hint="@string/email_hint"
+                    android:hint="@string/re_password_hint"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
 
-                <TextView
-                    android:id="@+id/nextLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
+                    android:id="@+id/createAccountButton"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/passwordRecover"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:text="@string/nex_step"
-                    android:textColor="@color/purple_700"
-                    android:textSize="20dp" />
+                    android:background="@drawable/rectangle_decorator_button"
+                    android:text="@string/create_account"
+                    android:textSize="25dp" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

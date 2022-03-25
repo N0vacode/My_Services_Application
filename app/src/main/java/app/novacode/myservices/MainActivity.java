@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
-import app.novacode.myservices.pages.signup.SingUp;
+import app.novacode.myservices.pages.signup.SignUp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Intent signUpIntent = new Intent(this, SingUp.class);
+        Intent signUpIntent = new Intent(this, SignUp.class);
         Intent passwordRecoveryIntent = new Intent(this, PasswordRecovery.class);
 
 

@@ -9,6 +9,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".pages.signup.SignUpSeller">
+
+
+    <include
+        android:id="@+id/constDesing"
+        layout="@layout/activity_const_design" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
