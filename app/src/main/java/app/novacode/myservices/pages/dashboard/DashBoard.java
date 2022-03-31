@@ -17,10 +17,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import app.novacode.myservices.GridAdapter;
 import app.novacode.myservices.R;
+import app.novacode.myservices.databinding.ActivityMainBinding;
+import app.novacode.myservices.widgets.ServicesAdapter;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -32,12 +40,17 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    GridView servicesList;
+    ActivityMainBinding binding;
+    EditText search;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_dash_board);
+        //setContentView(binding.getRoot());
 
 
         navigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -46,6 +59,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         app_bar.setSubtitle("");
 
         drawerLayout = findViewById(R.id.drawer);
+        servicesList = (GridView) findViewById(R.id.servicesList);
+
 
 
 
@@ -58,6 +73,87 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
+
+
+        String[] flawerNames = {
+                "Rose",
+                "Lotus",
+                "Lily",
+                "Jasmine",
+                "Violete",
+                "Mar",
+                "Rose",
+                "Lotus",
+                "Lily",
+                "Jasmine",
+                "Violete",
+                "Mar",
+                "Ocean",
+                "Snappa",
+                "Calamar",
+                "Rose",
+                "Lotus",
+                "Lily",
+                "Jasmine",
+                "Violete",
+                "Mar",
+                "Rose",
+                "Lotus",
+                "Lily",
+                "Jasmine",
+                "Violete",
+                "Mar",
+                "Ocean",
+                "Snappa",
+                "Calamar",
+                "Turutume"};
+        int[] flawersImage = {
+                R.drawable.ic_art,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_art,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_art,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_art,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_brasswork,
+                R.drawable.ic_carpenter,
+                R.drawable.ic_electronic};
+
+        GridAdapter gridAdapter = new GridAdapter(DashBoard.this, flawerNames, flawersImage);
+        servicesList.setAdapter(gridAdapter);
+
+
+        servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
+
+
+
 
     }
 

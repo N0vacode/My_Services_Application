@@ -50,6 +50,15 @@
             app:backgroundTint="#F8F6F6" />
 
 
+        <GridView
+            android:id="@+id/servicesList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/searchData"
+            android:layout_marginTop="5dp"
+            android:columnWidth="120dp"
+            android:numColumns="auto_fit" />
+
     </RelativeLayout>
 
 

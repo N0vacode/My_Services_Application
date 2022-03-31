@@ -22,6 +22,7 @@ import android.widget.Toast;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
+import app.novacode.myservices.widgets.ServicesAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 msmChangedActivity = "Please Insert Data";
                 Toast.makeText(MainActivity.this,msmChangedActivity,Toast.LENGTH_LONG).show();
-                startActivity(dashboard);
+                startActivity(signUpIntent);
 
             }
         });
@@ -84,9 +86,12 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isValidData(emailLogin, "You must enter an email", "mail"))
-                    if(isValidData(passwordLogin, "You must enter an password","password"))
-                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
+//                if(isValidData(emailLogin, "You must enter an email", "mail"))
+//                    if(isValidData(passwordLogin, "You must enter an password","password"))
+//                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
+
+
+                startActivity(dashboard);
             }
         });
 
