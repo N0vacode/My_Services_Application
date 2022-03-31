@@ -8,7 +8,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".pages.dashboard.DashBoard"
+            android:exported="false" />
+        <activity
+            android:name=".pages.recovery.NewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".pages.recovery.CodeValidator"
+            android:exported="false" />
         <activity
             android:name=".pages.signup.SignUpSellerBusiness"
             android:exported="false" />

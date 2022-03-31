@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) $2019 NovaCode All Rights Reserved
+  ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="CATEGORY">
+        <menu>
+
+            <item
+                android:id="@+id/carpentry"
+                android:title="Carpentry"
+                android:icon="@drawable/ic_carpenter">
+
+            </item>
+            <item
+                android:id="@+id/plumbing"
+                android:title="Plumbing"
+                android:icon="@drawable/ic_plumbing">
+
+            </item>
+            <item
+                android:id="@+id/electricity"
+                android:title="Electricity"
+                android:icon="@drawable/ic_electrical">
+
+            </item>
+            <item
+                android:id="@+id/electronics"
+                android:title="Electronics"
+                android:icon="@drawable/ic_electronic">
+
+            </item>
+            <item
+                android:id="@+id/brasswork"
+                android:title="Brasswork"
+                android:icon="@drawable/ic_brasswork">
+
+            </item>
+            <item
+                android:id="@+id/building"
+                android:title="Building"
+                android:icon="@drawable/ic_building">
+
+            </item>
+            <item
+                android:id="@+id/mechanics"
+                android:title="Mechanics"
+                android:icon="@drawable/ic_mechanics">
+
+            </item>
+            <item
+                android:id="@+id/technology"
+                android:title="Technology"
+                android:icon="@drawable/ic_tech"
+                >
+
+            </item>
+            <item
+                android:id="@+id/health"
+                android:title="Health"
+                android:icon="@drawable/ic_healt"
+                >
+
+            </item>
+            <item
+                android:id="@+id/fashion"
+                android:title="Fashion"
+                android:icon="@drawable/ic_fashion"
+                >
+
+            </item>
+
+            <item
+                android:id="@+id/art"
+                android:title="Art"
+                android:icon="@drawable/ic_art"
+                >
+
+            </item>
+
+        </menu>
+
+    </item>
+
+
+    <item android:title="SERVICES">
+
+        <menu>
+
+            <item
+                android:id="@+id/myServices"
+                android:title="My Services"
+                android:icon="@drawable/ic_services"
+                />
+
+            <item
+                android:id="@+id/newService"
+                android:title="New Service"
+                android:icon="@drawable/ic_new_service"
+                />
+
+        </menu>
+
+    </item>
+
+
+</menu>

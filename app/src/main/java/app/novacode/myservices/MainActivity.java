@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
 
@@ -54,18 +55,22 @@ public class MainActivity extends AppCompatActivity {
 
         Intent signUpIntent = new Intent(this, SignUp.class);
         Intent passwordRecoveryIntent = new Intent(this, PasswordRecovery.class);
+        Intent dashboard = new Intent(this, DashBoard.class);
 
 
+        // Sign Up Cliente or Seller Activity
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 msmChangedActivity = "Please Insert Data";
                 Toast.makeText(MainActivity.this,msmChangedActivity,Toast.LENGTH_LONG).show();
-                startActivity(signUpIntent);
+                startActivity(dashboard);
 
             }
         });
 
+
+        // Go to recovery password
         passwordRecover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Login Client or Seller
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Validation Of data
     boolean isValidData( EditText editText, String errorMsm, String typeData ){
 
         String data = editText.getText().toString();
@@ -109,14 +116,14 @@ public class MainActivity extends AppCompatActivity {
                         editText.setError("Your password must contain at least 6 characters");
                         return false;
                     }
-
                     return true;
-
             }
 
         }else{
+
             editText.setError(errorMsm);
             return false;
+
         }
 
         return true;

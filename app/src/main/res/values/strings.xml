@@ -16,9 +16,17 @@
     <string name="business_name">Business Name:</string>
     <string name="business_web">Business Web Site:</string>
     <string name="about_yout_business">About Your Business:</string>
+    <string name="send_code">SEND CODE</string>
+    <string name="validate_code">VALIDATE CODE</string>
+    <string name="code">CODE:</string>
+    <string name="change_password">GO!</string>
 
     <string name="nex_step">Next —></string>
     <string name="dev_nick">Dev. Novacode</string>
+    <string name="principal">Principal</string>
+    <string name="home">home</string>
+    <string name="close">close</string>
+    <string name="open">open</string>
 
     <string-array name="rol_user">
         <item>Client</item>

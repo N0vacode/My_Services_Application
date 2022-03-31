@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) $2019 NovaCode All Rights Reserved
+  ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
+  -->
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer"
+    android:background="@color/white"
+    tools:context=".pages.dashboard.DashBoard">
+
+    <include
+        android:id="@+id/constDesing"
+        layout="@layout/activity_const_design" />
+    <include
+        android:id="@+id/toolBars"
+        layout="@layout/app_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_theme"
+            android:hint="Search:"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchData"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:foreground="@drawable/ic_my_search"
+            app:backgroundTint="#F8F6F6" />
+
+
+    </RelativeLayout>
+
+
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="234dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer_menu" />
+
+
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
