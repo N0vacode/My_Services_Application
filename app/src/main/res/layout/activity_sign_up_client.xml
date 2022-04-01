@@ -99,6 +99,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rectangle_decorator_button"
                     android:text="@string/create_account"
+                    android:textColor="@color/white"
                     android:textSize="25dp" />
 
             </LinearLayout>

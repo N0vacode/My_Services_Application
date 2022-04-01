@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".pages.specifications.ServiceEdit"
+            android:exported="false" />
+        <activity
+            android:name=".pages.specifications.ServiceInfo"
+            android:exported="false" />
+        <activity
             android:name=".pages.dashboard.DashBoard"
             android:exported="false" />
         <activity

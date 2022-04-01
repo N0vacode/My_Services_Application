@@ -10,6 +10,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,8 @@ import android.widget.Toast;
 import app.novacode.myservices.GridAdapter;
 import app.novacode.myservices.R;
 import app.novacode.myservices.databinding.ActivityMainBinding;
+import app.novacode.myservices.pages.specifications.ServiceEdit;
+import app.novacode.myservices.pages.specifications.ServiceInfo;
 import app.novacode.myservices.widgets.CreateServiceDialog;
 
 import androidx.appcompat.widget.Toolbar;
@@ -62,6 +66,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
 
+
         navigationView.setFitsSystemWindows(true);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -75,8 +80,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
         String[] serviceNames = {
-                "Rose",
-                "Lotus",
+                "Romy Dante Solutions Service Romy Dante Solutions Service",
+                "Romy Dante Solutions",
                 "Lily",
                 "Jasmine",
                 "Violete",
@@ -84,7 +89,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 "Rose",
                 "Lotus",
                 "Lily",
-                "Jasmine",
+                "Romy Dante Solutions Service",
                 "Violete",
                 "Mar",
                 "Ocean",
@@ -102,7 +107,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 "Jasmine",
                 "Violete",
                 "Mar",
-                "Ocean",
+                "Romy Dante Solutions Service Romy Dante Solutions Service",
                 "Snappa",
                 "Calamar",
                 "Turutume"};
@@ -180,11 +185,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         GridAdapter gridAdapter = new GridAdapter(DashBoard.this, serviceNames, serviceImage,rates);
         servicesList.setAdapter(gridAdapter);
 
+        Intent myServicesList = new Intent(this, ServiceInfo.class);
 
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                startActivity(myServicesList);
             }
         });
 
@@ -199,20 +206,21 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    //TODO Create dialog if not is a [SELLER] can't use "My Service" and "New Service"
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        Intent myServicesList = new Intent(DashBoard.this, ServiceEdit.class);
 
         switch(item.getItemId()){
 
-            case R.id.carpentry:
-
-                Toast.makeText(getApplicationContext(), "Home Button", Toast.LENGTH_LONG).show();
+            case R.id.newService:
                 confirmStartGame();
                 break;
 
-            case R.id.plumbing:
-                Toast.makeText(getApplicationContext(), "Personas", Toast.LENGTH_LONG).show();
+            case R.id.myServices:
+                startActivity(myServicesList);
                 break;
 
             default:

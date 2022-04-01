@@ -30,6 +30,7 @@
     <string name="title_register_service">TITLE</string>
     <string name="specifications_service">SPECIFICATIONS</string>
     <string name="price">PRICE</string>
+    <string name="search">Search</string>
 
     <string-array name="rol_user">
         <item>Client</item>

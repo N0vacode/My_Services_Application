@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) $2019 NovaCode All Rights Reserved
+  ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pages.specifications.ServiceEdit">
+
+    <include
+        android:id="@+id/constDesing"
+        layout="@layout/activity_const_design" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backButton2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@color/white"
+        android:foreground="@drawable/ic_back"
+        app:backgroundTint="#F8F6F6" />
+
+</RelativeLayout>

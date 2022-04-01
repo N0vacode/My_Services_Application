@@ -8,8 +8,6 @@ package app.novacode.myservices.widgets;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
@@ -29,7 +27,6 @@ public class CreateServiceDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-
         builder.setTitle("Register Your Service");
         builder.setIcon(R.drawable.ic_new_service);
         builder.setView(inflater.inflate(R.layout.register_service_dialog, null));

@@ -6,8 +6,16 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/circle_decorator_dialog"
     android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/title_layout"
@@ -20,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
+            android:layout_gravity="center"
             android:text="@string/title_register_service"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -36,48 +45,46 @@
             android:textSize="10sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tittleCharacters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title_layout"
-        android:layout_centerHorizontal="true"
-        android:text="0/255"
-        android:textSize="10sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tittleCharacters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0/255"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/specificationsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title_layout"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/specifications_service"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/specificationsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_layout"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/specifications_service"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@+id/specificationsTitle"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/edittext_theme"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
+            <EditText
+                android:id="@+id/editTextTextMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@+id/specificationsTitle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/edittext_theme"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
 
-    <TextView
-        android:id="@+id/specificationsCharacters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextMultiLine"
-        android:text="0/1050"
-        android:textSize="10sp"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/specificationsCharacters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0/1050"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/priceLayout"
@@ -93,7 +100,8 @@
             android:layout_marginStart="5dp"
             android:text="@string/price"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
 
         <EditText
             android:id="@+id/priceNewService"
@@ -109,17 +117,17 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/createService"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/priceLayout"
-        android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
         android:background="@drawable/rectangle_decorator_button"
         android:text="@string/create_account"
         android:textColor="@color/white"
         android:textSize="25sp" />
-
-
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -82,6 +82,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_decorator_button"
         android:text="@string/login_text"
+        android:textColor="@color/white"
         android:textSize="25dp" />
 
 <!--    Botton Information-->
@@ -93,9 +94,10 @@
         android:text="@string/dev_nick"
         android:textColor="@android:color/darker_gray"
         android:textSize="12dp" />
+
     <include
         android:id="@+id/circle_botton"
-        layout="@layout/circle_botton_widget"/>
+        layout="@layout/circle_botton_widget" />
 
 
 </RelativeLayout>

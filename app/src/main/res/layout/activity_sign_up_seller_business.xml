@@ -77,6 +77,7 @@
                     android:textSize="20dp" />
 
                 <LinearLayout
+                    android:id="@+id/imageBussieness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -100,8 +101,20 @@
                         android:src="@drawable/photo_business" />
 
                 </LinearLayout>
-
+                <Button
+                    android:id="@+id/createAccountSeller"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/imageBussieness"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle_decorator_button"
+                    android:text="@string/create_account"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
             </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 

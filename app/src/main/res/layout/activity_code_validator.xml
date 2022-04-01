@@ -49,5 +49,6 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/rectangle_decorator_button"
         android:text="@string/validate_code"
+        android:textColor="@color/white"
         android:textSize="25dp" />
 </RelativeLayout>

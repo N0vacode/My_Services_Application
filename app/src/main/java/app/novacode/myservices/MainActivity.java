@@ -22,7 +22,6 @@ import android.widget.Toast;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
-import app.novacode.myservices.widgets.ServicesAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
