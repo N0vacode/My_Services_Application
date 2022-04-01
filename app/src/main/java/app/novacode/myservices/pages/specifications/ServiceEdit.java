@@ -10,8 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import app.novacode.myservices.R;
 import app.novacode.myservices.pages.dashboard.DashBoard;
@@ -19,6 +26,7 @@ import app.novacode.myservices.pages.dashboard.DashBoard;
 public class ServiceEdit extends AppCompatActivity {
 
     FloatingActionButton backButton2 ;
+    ListView servicesListSeller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,14 @@ public class ServiceEdit extends AppCompatActivity {
         setContentView(R.layout.activity_service_edit);
 
         backButton2 = (FloatingActionButton) findViewById(R.id.backButton2);
+        servicesListSeller = (ListView) findViewById(R.id.servicesListSeller);
+
+
+        ArrayAdapter<CharSequence> arrayAdapterService = ArrayAdapter.createFromResource(this, R.array.countrys, android.R.layout.simple_list_item_1);
+        servicesListSeller.setAdapter(arrayAdapterService);
+
+
+
 
 
         Intent backHome = new Intent(this, DashBoard.class);
@@ -34,6 +50,15 @@ public class ServiceEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(backHome);
+            }
+        });
+
+
+        servicesListSeller.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ServiceEdit.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_LONG).show();
+
             }
         });
     }

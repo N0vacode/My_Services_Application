@@ -37,30 +37,30 @@
         <item>Seller</item>
     </string-array>
 
+    <string-array name="countrys">
+        <item>New Zealand</item>
+        <item>North Island</item>
+        <item>Northland</item>
+        <item>Auckland</item>
+        <item>Waikato</item>
+        <item>Bay of Plenty</item>
+        <item>Gisborne</item>
+        <item>Hawke`s Bay</item>
+        <item>Taranaki</item>
+        <item>Whanganui</item>
+        <item>Manawatu</item>
+        <item>Wairarapa</item>
+        <item>Wellington</item>
+        <item>South Island</item>
+        <item>Nelson Bays</item>
+        <item>Marlborough</item>
+        <item>West Coast</item>
+        <item>Canterbury</item>
+        <item>Timaru - Oamaru</item>
+        <item>Otago</item>
+        <item>Southland</item>
+    </string-array>
 
-    <!--    <string-array name="city">-->
-    <!--        <item>New Zealand</item>-->
-    <!--        <item>North Island</item>-->
-    <!--        <item>Northland</item>-->
-    <!--        <item>Auckland</item>-->
-    <!--        <item>Waikato</item>-->
-    <!--        <item>Bay of Plenty</item>-->
-    <!--        <item>Gisborne</item>-->
-    <!--        <item>Hawke's Bay</item>-->
-    <!--        <item>Taranaki</item>-->
-    <!--        <item>Whanganui</item>-->
-    <!--        <item>Manawatu</item>-->
-    <!--        <item>Wairarapa</item>-->
-    <!--        <item>Wellington</item>-->
-    <!--        <item>South Island</item>-->
-    <!--        <item>Nelson Bays</item>-->
-    <!--        <item>Marlborough</item>-->
-    <!--        <item>West Coast</item>-->
-    <!--        <item>Canterbury</item>-->
-    <!--        <item>Timaru - Oamaru</item>-->
-    <!--        <item>Otago</item>-->
-    <!--        <item>Southland</item>-->
-    <!--    </string-array>-->
 
 
 </resources>

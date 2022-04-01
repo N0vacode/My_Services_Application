@@ -71,13 +71,13 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/edittext_theme"
-                    android:hint="@string/second_name_hint"
+                    android:hint="@string/password_hint"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/emailSignUp"
+                    android:id="@+id/rePasswordSeller"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"

@@ -47,7 +47,7 @@
                     android:orientation="horizontal" />
 
                 <Spinner
-                    android:id="@+id/selectCityClien"
+                    android:id="@+id/selectCityClient"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"

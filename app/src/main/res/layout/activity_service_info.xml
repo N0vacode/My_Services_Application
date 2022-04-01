@@ -254,7 +254,7 @@
 
 
                 <Button
-                    android:id="@+id/loginButton"
+                    android:id="@+id/ratingDialogButton"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="right"

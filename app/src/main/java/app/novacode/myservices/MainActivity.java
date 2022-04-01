@@ -22,6 +22,7 @@ import android.widget.Toast;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
+import app.novacode.myservices.rules.Validation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(isValidData(emailLogin, "You must enter an email", "mail"))
-//                    if(isValidData(passwordLogin, "You must enter an password","password"))
+ //               if(Validation.data(emailLogin, "You must enter an email", "mail"))
+//                    if(Validation.data(passwordLogin, "You must enter an password","password"))
 //                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
 
 
@@ -94,43 +95,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-
-    // Validation Of data
-    boolean isValidData( EditText editText, String errorMsm, String typeData ){
-
-        String data = editText.getText().toString();
-
-        if( data.length() > 0) {
-
-            switch (typeData){
-                case "mail":
-
-                    if(data.contains("@") && data.contains(".") )
-                        return true;
-                    else
-                        editText.setError("Your email must contain @ and . ");
-                        return false;
-
-                case "password":
-
-                    if(data.length() < 6) {
-                        editText.setError("Your password must contain at least 6 characters");
-                        return false;
-                    }
-                    return true;
-            }
-
-        }else{
-
-            editText.setError(errorMsm);
-            return false;
-
-        }
-
-        return true;
 
     }
 
