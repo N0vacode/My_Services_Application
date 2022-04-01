@@ -15,20 +15,22 @@ import android.widget.TextView;
 
 public class GridAdapter extends BaseAdapter {
     Context context;
-    String[] flowerName;
+    String[] serviceName;
     int[] image;
+    int[] rate;
 
     LayoutInflater layoutInflater;
 
-    public GridAdapter(Context context, String[] flowerName, int[] image) {
+    public GridAdapter(Context context, String[] serviceName, int[] image, int[] rate) {
         this.context = context;
-        this.flowerName = flowerName;
+        this.serviceName = serviceName;
         this.image = image;
+        this.rate = rate;
     }
 
     @Override
     public int getCount() {
-        return flowerName.length;
+        return serviceName.length;
     }
 
     @Override
@@ -51,11 +53,13 @@ public class GridAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.grid_item,null);
         }
 
-        ImageView imageView = view.findViewById(R.id.image_service);
-        TextView textView = view.findViewById(R.id.name_service);
+        ImageView rates = view.findViewById(R.id.rates);
+        ImageView viewService = view.findViewById(R.id.image_service);
+        TextView nameService = view.findViewById(R.id.name_service);
 
-        imageView.setImageResource(image[i]);
-        textView.setText(flowerName[i]);
+        viewService.setImageResource(image[i]);
+        nameService.setText(serviceName[i]);
+        rates.setImageResource(rate[i]);
 
         return view;
     }
