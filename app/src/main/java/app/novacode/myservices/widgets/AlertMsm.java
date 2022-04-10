@@ -3,10 +3,8 @@ package app.novacode.myservices.widgets;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

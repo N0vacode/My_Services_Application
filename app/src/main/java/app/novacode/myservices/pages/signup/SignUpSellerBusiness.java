@@ -5,9 +5,9 @@
 
 package app.novacode.myservices.pages.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import app.novacode.myservices.R;
 

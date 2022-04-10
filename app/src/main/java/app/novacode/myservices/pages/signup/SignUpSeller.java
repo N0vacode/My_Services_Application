@@ -5,14 +5,13 @@
 
 package app.novacode.myservices.pages.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import app.novacode.myservices.R;
 

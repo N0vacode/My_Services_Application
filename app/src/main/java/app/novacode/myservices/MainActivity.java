@@ -6,9 +6,6 @@
 package app.novacode.myservices;
 
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -19,10 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import app.novacode.myservices.adapter.Validation;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
-import app.novacode.myservices.rules.Validation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Go to recovery password
+        // Go to recovery pass
         passwordRecover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,12 +85,12 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
- //               if(Validation.data(emailLogin, "You must enter an email", "mail"))
-//                    if(Validation.data(passwordLogin, "You must enter an password","password"))
-//                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
+                if(Validation.data(emailLogin, "You must enter an email", "mail"))
+                    if(Validation.data(passwordLogin, "You must enter an password","password"))
+                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
 
 
-                startActivity(dashboard);
+//                startActivity(dashboard);
             }
         });
 

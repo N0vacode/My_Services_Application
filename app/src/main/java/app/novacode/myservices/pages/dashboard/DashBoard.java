@@ -5,11 +5,6 @@
 
 package app.novacode.myservices.pages.dashboard;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,19 +15,22 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 
-import app.novacode.myservices.adapter.GridAdapter;
-import app.novacode.myservices.R;
-import app.novacode.myservices.databinding.ActivityMainBinding;
-import app.novacode.myservices.pages.specifications.ServiceEdit;
-import app.novacode.myservices.pages.specifications.ServiceInfo;
-import app.novacode.myservices.widgets.CreateServiceDialog;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import app.novacode.myservices.R;
+import app.novacode.myservices.adapter.GridAdapter;
+import app.novacode.myservices.databinding.ActivityMainBinding;
+import app.novacode.myservices.pages.specifications.ServiceEdit;
+import app.novacode.myservices.pages.specifications.ServiceInfo;
+import app.novacode.myservices.widgets.CreateServiceDialog;
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

@@ -1,7 +1,5 @@
 package app.novacode.myservices.pages.signup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +10,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import app.novacode.myservices.MainActivity;
 import app.novacode.myservices.R;
-import app.novacode.myservices.rules.Validation;
+import app.novacode.myservices.adapter.Validation;
 
 public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
