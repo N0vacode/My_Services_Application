@@ -7,7 +7,7 @@ package app.novacode.myservices.repository;
 
 import app.novacode.myservices.services.CrudService;
 
-public abstract class BusinessRepository extends UserRepository implements CrudService {
+public abstract class BusinessRepository extends UserRepository{
 
     private String Bid;
     private String bArea;

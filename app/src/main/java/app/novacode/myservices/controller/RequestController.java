@@ -5,15 +5,25 @@
 
 package app.novacode.myservices.controller;
 
+import android.content.Context;
+
+import java.io.IOException;
+import java.util.Map;
+
 import app.novacode.myservices.services.RequestService;
+import retrofit2.http.GET;
 
 public class RequestController implements RequestService {
 
 
+    private final String link = "http://172.245.226.231:8080/myservice/api/v1";
+
     @Override
-    public Object postData(Object data) {
-        return null;
+    public void postData(Context context,Map<String,Object> params, String route){
+
+
     }
+
 
     @Override
     public Object getData(Object data) {

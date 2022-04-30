@@ -5,9 +5,11 @@
 
 package app.novacode.myservices.rules;
 
+import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 import app.novacode.myservices.R;
 
@@ -63,5 +65,6 @@ public class Validation {
         return true;
 
     }
+
 
 }

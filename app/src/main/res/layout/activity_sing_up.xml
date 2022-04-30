@@ -95,6 +95,13 @@
                     android:textColorHint="@color/text_hint"
                     android:textSize="20dp" />
 
+                <TextView
+                    android:id="@+id/errorMsm"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/purple_700"/>
 
                 <TextView
                     android:id="@+id/nextLogin"

@@ -6,16 +6,24 @@
 package app.novacode.myservices.pages.signup;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
+import app.novacode.myservices.adapter.Validation;
+import app.novacode.myservices.entity.Client;
 
 public class SignUpClient extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -24,6 +32,11 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
     EditText passwordClient;
     EditText rePasswordClient;
     Button createAccountClient;
+
+
+    Client clientData = new Client();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +55,53 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
         selectCityClient.setAdapter(adapterCountry);
         selectCityClient.setOnItemSelectedListener(this);
 
+        // Client previous layout data
+        String userRol = getIntent().getExtras().getString("userRol");
+        String userFirstName = getIntent().getExtras().getString("userFirstName");
+        String userSecondName = getIntent().getExtras().getString("userSecondName");
+        String userMail = getIntent().getExtras().getString("userMail");
+
+
+
+
 
 
         createAccountClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                clientData.setUsRol(userRol);
+                clientData.setUsFirsName(userFirstName);
+                clientData.setUsSecondName(userSecondName);
+                clientData.setUsEmail(userMail);
+
+
+                if(Validation.data(passwordClient,"Enter your Password","password")){
+
+                    if(passwordClient.getText().toString().equals(rePasswordClient.getText().toString())){
+
+
+                        clientData.setUsPhone(phoneClient.getText().toString());
+                        clientData.setUsPassword(rePasswordClient.getText().toString());
+
+
+                        // Here is for create client account, and validation data.
+                        if(!clientData.getUsCity().isEmpty()) {
+
+                            clientData.signUpUser(SignUpClient.this, clientData);
+                          //  clientData.getUser(SignUpClient.this,11);
+
+                        }
+
+
+                    }else{
+
+                        Toast.makeText(SignUpClient.this, "Second password is diferent to First Password", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+
+
                 //TODO Create function for singup client
             }
         });
@@ -54,7 +109,10 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        System.out.println(adapterView.getItemAtPosition(i));
+//        System.out.println(adapterView.getItemAtPosition(i).toString());
+
+        clientData.setUsCity(adapterView.getItemAtPosition(i).toString());
+        System.out.println( adapterView.getItemAtPosition(i).toString() );
         adapterView.getItemAtPosition(i);
 
     }

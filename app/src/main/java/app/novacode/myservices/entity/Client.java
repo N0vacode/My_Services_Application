@@ -6,42 +6,43 @@
 package app.novacode.myservices.entity;
 
 
+import android.content.Context;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import app.novacode.myservices.ConstantValues;
+import app.novacode.myservices.controller.RequestController;
 import app.novacode.myservices.repository.UserRepository;
+import app.novacode.myservices.services.ApiService;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Client extends UserRepository {
 
-    private double rate;
 
-    public Client(
-            double rate,
-            int userId,
-            String firtsName,
-            String secondName,
-            String cityUser,
-            String mail,
-            String phone,
-            String password,
-            String rol) {
-        this.setUsId(userId);
-        this.rate = rate;
-        this.setUsFirsName(firtsName);
-        this.setUsSecondName(secondName);
-        this.setUsCity(cityUser);
-        this.setUsEmail(mail);
-        this.setUsPhone(phone);
-        this.setUsPassword(password);
-        this.setUsRol(rol);
-    }
 
     public Client(){}
 
-    void sendRate(){}
 
-    public double getRate() {
-        return rate;
-    }
 
-    public void setRate(double rate) {
-        this.rate = rate;
+
+
+
+
+
+    void print(Object obj){
+        System.out.println(obj);
     }
 }

@@ -5,9 +5,21 @@
 
 package app.novacode.myservices.services;
 
+import android.content.Context;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Map;
+
+import app.novacode.myservices.repository.UserRepository;
+import retrofit2.Call;
+import retrofit2.http.POST;
+
 public interface RequestService {
 
-    Object postData(Object data);
+
+    void postData(Context context, Map<String,Object>  data, String route);
     Object getData(Object data);
     Object deleteData(Object id);
     Object putDate(Object data);

@@ -11,27 +11,4 @@ import app.novacode.myservices.repository.BusinessRepository;
 public class Seller extends BusinessRepository {
 
 
-    @Override
-    public void createService(Services service) {
-
-
-
-    }
-
-    @Override
-    public void updateService(Services service) {
-
-    }
-
-    @Override
-    public void deleteService(int serviceCode) {
-
-    }
-
-    @Override
-    public Services getItem(int id) {
-        return null;
-    }
-
-
 }

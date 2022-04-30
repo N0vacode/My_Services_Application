@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import app.novacode.myservices.adapter.Validation;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
@@ -32,10 +33,13 @@ public class MainActivity extends AppCompatActivity {
     Button loginButton;
 
 
+
+
     String msmChangedActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -87,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(Validation.data(emailLogin, "You must enter an email", "mail"))
                     if(Validation.data(passwordLogin, "You must enter an password","password"))
+                        // Todo: Aqui debe ir la funcion para Login de Usuario ya sea cliente o seller
                         Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
 
 
-//                startActivity(dashboard);
+           //     startActivity(dashboard);
             }
         });
 
