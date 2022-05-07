@@ -34,13 +34,7 @@ public class Client extends UserRepository {
 
 
     public Client(){}
-
-
-
-
-
-
-
+    
 
     void print(Object obj){
         System.out.println(obj);
