@@ -89,13 +89,14 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Validation.data(emailLogin, "You must enter an email", "mail"))
-                    if(Validation.data(passwordLogin, "You must enter an password","password"))
-                        // Todo: Aqui debe ir la funcion para Login de Usuario ya sea cliente o seller
-                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
+
+//                if(Validation.data(emailLogin, "You must enter an email", "mail"))
+//                    if(Validation.data(passwordLogin, "You must enter an password","password"))
+//                        // Todo: Aqui debe ir la funcion para Login de Usuario ya sea cliente o seller
+//                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
 
 
-           //     startActivity(dashboard);
+               startActivity(dashboard);
             }
         });
 
