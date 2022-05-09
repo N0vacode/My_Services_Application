@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public abstract class UserRepository{
+public class UserRepository{
 
 
     private String userFirstName;
@@ -140,6 +142,52 @@ public abstract class UserRepository{
         });
 
         // TODO: Problem for validate Email.
+
+
+    }
+
+
+
+    // TODO: Create login response POST Method
+    String validatiosResponse = "";
+    public String loginUser(Context context, String mailUser, String password){
+
+
+
+        Call<String> userRepositoryCall = ApiService.getUserService().loginUser(mailUser, password);
+
+        userRepositoryCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                if(response.isSuccessful()){
+
+                    //TODO: SERIALIZE USER DATA
+
+
+                    validatiosResponse = response.toString();
+
+
+                }else{
+
+                    Toast.makeText(context, "We couldn't check your email", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
+        return validatiosResponse;
+
 
 
     }

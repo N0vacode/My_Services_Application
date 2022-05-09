@@ -27,6 +27,9 @@ public interface UserService {
     @GET(ConstantValues.PATH_EXIST_MAIL)
     Call<Map<String, Boolean>> emailExist(@Path("mail") String mail);
 
+    @GET(ConstantValues.PATH_LOGIN)
+    Call<String> loginUser(@Path("mail") String mail, @Path("password") String password);
+
 
 
 }

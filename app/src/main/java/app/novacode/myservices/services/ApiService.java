@@ -13,6 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiService {
+    static String responseOkHttp;
 
     private static Retrofit getRetrofit(){
 
@@ -27,6 +28,8 @@ public class ApiService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
+        System.out.println(okHttpClient.getRouteDatabase() + " @@@@@@@@@@@@@@@");
+
 
         return retrofit;
 

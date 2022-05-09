@@ -23,6 +23,7 @@ import app.novacode.myservices.adapter.Validation;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
+import app.novacode.myservices.repository.UserRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordLogin;
     Button loginButton;
 
-
+    UserRepository userRepository = new UserRepository();
 
 
     String msmChangedActivity;
@@ -90,13 +91,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                if(Validation.data(emailLogin, "You must enter an email", "mail"))
-//                    if(Validation.data(passwordLogin, "You must enter an password","password"))
+                if(Validation.data(emailLogin, "You must enter an email", "mail"))
+                    if(Validation.data(passwordLogin, "You must enter an password","password")) {
+
 //                        // Todo: Aqui debe ir la funcion para Login de Usuario ya sea cliente o seller
-//                        Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
+                        if(userRepository.loginUser(MainActivity.this,
+                                emailLogin.getText().toString(),
+                                passwordLogin.getText().toString()).equals("Valid")){
+                            startActivity(dashboard);
+                        }
 
+                    }
+                        //Toast.makeText(MainActivity.this,"Loguin Susses", Toast.LENGTH_LONG).show();
 
-               startActivity(dashboard);
+                
+
             }
         });
 

@@ -15,6 +15,7 @@ public class ConstantValues {
     public final static String PATH_SIGNUP_CLIENT = "user/body";
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
     public final static String PATH_EXIST_MAIL = "user/validate/{mail}";
+    public final static String PATH_LOGIN = "user/login/{mail}/{password}";
 
 
     // Value Key User Client
