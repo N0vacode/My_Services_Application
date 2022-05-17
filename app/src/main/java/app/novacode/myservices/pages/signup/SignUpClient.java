@@ -24,6 +24,7 @@ import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
 import app.novacode.myservices.adapter.Validation;
 import app.novacode.myservices.entity.Client;
+import app.novacode.myservices.services.MD5C;
 
 public class SignUpClient extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -56,7 +57,7 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
         selectCityClient.setOnItemSelectedListener(this);
 
         // Client previous layout data
-        String userRol = getIntent().getExtras().getString("userRol");
+        String userRol = getIntent().getExtras().getString(ConstantValues.USER_ROL_KEY);
         String userFirstName = getIntent().getExtras().getString("userFirstName");
         String userSecondName = getIntent().getExtras().getString("userSecondName");
         String userMail = getIntent().getExtras().getString("userMail");
@@ -70,6 +71,8 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
 
+                MD5C.setUserData(rePasswordClient.getText().toString());
+                String passMd5 = MD5C.convert();
                 clientData.setUsRol(userRol);
                 clientData.setUsFirsName(userFirstName);
                 clientData.setUsSecondName(userSecondName);
@@ -82,7 +85,7 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
 
 
                         clientData.setUsPhone(phoneClient.getText().toString());
-                        clientData.setUsPassword(rePasswordClient.getText().toString());
+                        clientData.setUsPassword(passMd5);
 
 
                         // Here is for create client account, and validation data.

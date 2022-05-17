@@ -6,29 +6,22 @@
 package app.novacode.myservices.repository;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Timer;
 
 import app.novacode.myservices.ConstantValues;
+import app.novacode.myservices.MainActivity;
+import app.novacode.myservices.pages.recovery.CodeValidator;
+import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.services.ApiService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,6 +37,8 @@ public class UserRepository{
     private String userPhone;
     private String userPassword;
     private String userRol;
+    private String emailReset;
+
 
     private boolean mailExist;
 
@@ -77,8 +72,8 @@ public class UserRepository{
     }
 
 
-
     public void signUpUser(Context context, Object userData){
+        Intent intentMainActivity = new Intent(context, MainActivity.class);
 
 
         Call<UserRepository> userRepositoryCall = ApiService.getUserService().creteAccount(userData);
@@ -89,6 +84,11 @@ public class UserRepository{
             public void onResponse(Call<UserRepository> call, Response<UserRepository> response) {
 
                     if (response.isSuccessful()) {
+
+                        intentMainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                        context.startActivity(intentMainActivity);
+
                         Toast.makeText(context, "Account Created", Toast.LENGTH_SHORT).show();
                     }
 
@@ -108,6 +108,55 @@ public class UserRepository{
     }
 
 
+
+    public void changePassword( Context context, UserRepository mailData ){
+
+
+
+        Intent intentMainActivity = new Intent(context, MainActivity.class);
+
+
+        // todo se debe enviar el mail y el password
+        Call<Map<String, Object>> userRepositoryCall = ApiService.getUserService().putPassword(mailData);
+
+        userRepositoryCall.enqueue(new Callback<Map<String, Object>>() {
+
+            @Override
+            public void onResponse(Call<Map<String, Object>> call, Response<Map<String, Object>> response) {
+
+                if (response.isSuccessful()) {
+
+                    intentMainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                    context.startActivity(intentMainActivity);
+
+                    if(response.body().get("statusPassword") != null) {
+
+                        //TODO: CHANGE FOR DIALOG -> [Becuase the password is changed and need clear information] Include ok button
+
+                        Toast.makeText(context, response.body().get("statusPassword").toString(), Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(context, "Failed to Change Password", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Map<String, Object>> call, Throwable t) {
+                System.out.println(t);
+//                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+
+
+
+
+    }
 
     public void mailExist( String email ) throws InterruptedException {
         Call<Map<String, Boolean>> userRepositoryCall = ApiService.getUserService().emailExist(email);
@@ -145,57 +194,6 @@ public class UserRepository{
 
 
     }
-
-
-
-    // TODO: Create login response POST Method
-    String validatiosResponse = "";
-    public String loginUser(Context context, String mailUser, String password){
-
-
-
-        Call<String> userRepositoryCall = ApiService.getUserService().loginUser(mailUser, password);
-
-        userRepositoryCall.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-
-                if(response.isSuccessful()){
-
-                    //TODO: SERIALIZE USER DATA
-
-
-                    validatiosResponse = response.toString();
-
-
-                }else{
-
-                    Toast.makeText(context, "We couldn't check your email", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
-
-        return validatiosResponse;
-
-
-
-    }
-
-
-
-
-
 
 
 
@@ -262,5 +260,14 @@ public class UserRepository{
 
     public void setMailExist(boolean mailExist) {
         this.mailExist = mailExist;
+    }
+
+
+    public String getEmailReset() {
+        return emailReset;
+    }
+
+    public void setEmailReset(String emailReset) {
+        this.emailReset = emailReset;
     }
 }

@@ -6,14 +6,19 @@
 package app.novacode.myservices.pages.dashboard;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -25,6 +30,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
 import app.novacode.myservices.adapter.GridAdapter;
 import app.novacode.myservices.databinding.ActivityMainBinding;
@@ -43,6 +49,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     EditText search;
     FloatingActionButton searchData;
 
+    TextView userName;
+
+
+    SharedPreferences userPreferences;
+    SharedPreferences.Editor editor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +63,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_dash_board);
 
+        userPreferences = this.getPreferences(Context.MODE_PRIVATE);
+        editor = userPreferences.edit();
 
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         app_bar = (Toolbar) findViewById(R.id.appBar);
@@ -60,6 +75,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         servicesList = (GridView) findViewById(R.id.servicesList);
         searchData = (FloatingActionButton) findViewById(R.id.searchData);
 
+        // TODO: Import data of login intent
+
+
 
 
 
@@ -67,12 +85,14 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         navigationView.setFitsSystemWindows(true);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         setSupportActionBar(app_bar);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, app_bar, R.string.open, R.string.close);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
 
 
 
@@ -188,14 +208,41 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 startActivity(myServicesList);
+
             }
+
+
         });
 
 
+        // Validation if is Seller or Client
+        if( haveSavedData() ) {
 
+            if(userPreferences.getString(ConstantValues.USER_ROL_KEY,"Client").equals("Client")) {
+                navigationView.getMenu().findItem(R.id.services).setVisible(false);
+            }
+
+            Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
+
+        }else{
+
+            saveLoginData();
+
+            if(getIntent().getStringExtra(ConstantValues.USER_ROL_KEY).equals("Client")) {
+                navigationView.getMenu().findItem(R.id.services).setVisible(false);
+            }
+            Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
+        }
+
+        inflateDrawerNameUser();
 
     }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,16 +251,17 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     }
 
 
-    //TODO Create dialog if not is a [SELLER] can't use "My Service" and "New Service"
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         Intent myServicesList = new Intent(DashBoard.this, ServiceEdit.class);
 
         switch(item.getItemId()){
 
             case R.id.newService:
-                confirmStartGame();
+                createNewService();
                 break;
 
             case R.id.myServices:
@@ -222,12 +270,46 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
             default:
         }
+
+
         return false;
+
     }
-    public void confirmStartGame() {
+
+
+
+
+    public void createNewService() {
 
         DialogFragment newFragment = new CreateServiceDialog();
-        newFragment.show(getSupportFragmentManager(), "game");
+        newFragment.show(getSupportFragmentManager(), "New Service");
+
+    }
+
+
+    void inflateDrawerNameUser(){
+        //setContentView(R.layout.drawer_header);
+        LayoutInflater inflater = LayoutInflater.from(DashBoard.this);
+
+        final View v = inflater.inflate(R.layout.drawer_header, null).findViewById(R.id.userName);
+
+        TextView nav_playerid = (TextView) v;
+
+
+        nav_playerid.setText("New Data");
+
+    }
+
+    protected boolean haveSavedData(){
+        return this.userPreferences.getBoolean(ConstantValues.SAVED_DATA_USER, false);
+    }
+
+    protected void saveLoginData(){
+
+        editor.putString(ConstantValues.USER_MAIL_KEY, getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY)).apply();
+        editor.putString(ConstantValues.USER_ROL_KEY, getIntent().getStringExtra(ConstantValues.USER_ROL_KEY)).apply();
+        editor.putString(ConstantValues.USER_FNAME_KEY, getIntent().getStringExtra(ConstantValues.USER_FNAME_KEY)).apply();
+        editor.putBoolean(ConstantValues.SAVED_DATA_USER, true).apply();
 
     }
 

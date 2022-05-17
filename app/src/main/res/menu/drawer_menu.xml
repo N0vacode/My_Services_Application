@@ -7,7 +7,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="CATEGORY">
+        android:title="CATEGORY"
+        android:id="@+id/category"
+        >
+
         <menu>
 
             <item
@@ -87,7 +90,9 @@
     </item>
 
 
-    <item android:title="SERVICES">
+    <item
+        android:title="SERVICES"
+        android:id="@+id/services">
 
         <menu>
 

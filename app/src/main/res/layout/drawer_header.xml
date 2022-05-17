@@ -3,9 +3,9 @@
   ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
   -->
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/drawer_header_color"
     android:layout_height="match_parent">
 
@@ -26,15 +26,14 @@
         android:layout_below="@+id/main_icon_login">
 
         <TextView
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Jhonatan"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

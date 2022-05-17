@@ -16,15 +16,23 @@ public class ConstantValues {
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
     public final static String PATH_EXIST_MAIL = "user/validate/{mail}";
     public final static String PATH_LOGIN = "user/login/{mail}/{password}";
+    public final static String PATH_SEND_CODE = "reset_password";
+    public final static String PATH_GET_CODE_INFO = "reset_password/info_code/{reset_code}";
+    public final static String PATH_USER_MAIN = "user";
 
 
     // Value Key User Client
     public final static String USER_ROL_KEY   = "userRol";
+    public final static String USER_ID_KEY    = "userId";
     public final static String USER_FNAME_KEY = "userFirstName";
     public final static String USER_SNAME_KEY = "userSecondName";
     public final static String USER_CITY_KEY  = "userCity";
     public final static String USER_MAIL_KEY  = "userMail";
     public final static String USER_PHONE_KEY = "userPhone";
     public final static String USER_PASS_KEY  = "userPassword";
+    public final static String SAVED_DATA_USER = "userSaved";
+
+    // key for send validator code
+    public final static String PATH_KEY_MAIL_RECOVERY = "emailReset";
 
 }

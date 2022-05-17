@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
 import app.novacode.myservices.entity.Client;
 import app.novacode.myservices.entity.Seller;
@@ -57,6 +58,16 @@ public class SignUpSeller extends AppCompatActivity implements AdapterView.OnIte
         nextRegisterSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                bussinessRegister.putExtra(ConstantValues.USER_CITY_KEY, sellerData.getUsCity());
+                bussinessRegister.putExtra(ConstantValues.USER_PASS_KEY, sellerData.getUsPassword());
+                bussinessRegister.putExtra(ConstantValues.USER_PHONE_KEY, sellerData.getUsPhone());
+
+                bussinessRegister.putExtra(ConstantValues.USER_FNAME_KEY,getIntent().getStringExtra(ConstantValues.USER_FNAME_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_SNAME_KEY,getIntent().getStringExtra(ConstantValues.USER_SNAME_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_MAIL_KEY,getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_ROL_KEY,getIntent().getStringExtra(ConstantValues.USER_ROL_KEY));
 
                 startActivity(bussinessRegister);
 

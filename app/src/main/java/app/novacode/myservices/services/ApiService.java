@@ -5,6 +5,9 @@
 
 package app.novacode.myservices.services;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.repository.UserRepository;
 import okhttp3.OkHttpClient;
@@ -13,23 +16,28 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiService {
-    static String responseOkHttp;
+    public static String responseOkHttp;
 
     private static Retrofit getRetrofit(){
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
 
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ConstantValues.URL_API)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();
-        System.out.println(okHttpClient.getRouteDatabase() + " @@@@@@@@@@@@@@@");
 
+        responseOkHttp = okHttpClient.toString();
 
         return retrofit;
 

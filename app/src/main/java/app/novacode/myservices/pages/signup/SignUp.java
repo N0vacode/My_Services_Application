@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.MainActivity;
 import app.novacode.myservices.R;
 import app.novacode.myservices.adapter.Validation;
@@ -98,18 +99,18 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
 
                             if (userRol.equals("Client")) {
 
-                                signupClient.putExtra("userRol", userRol);
-                                signupClient.putExtra("userFirstName", firsName.getText().toString());
-                                signupClient.putExtra("userSecondName", secondName.getText().toString());
-                                signupClient.putExtra("userMail", emailSignUp.getText().toString());
+                                signupClient.putExtra(ConstantValues.USER_ROL_KEY, userRol);
+                                signupClient.putExtra(ConstantValues.USER_FNAME_KEY, firsName.getText().toString());
+                                signupClient.putExtra(ConstantValues.USER_SNAME_KEY, secondName.getText().toString());
+                                signupClient.putExtra(ConstantValues.USER_MAIL_KEY, emailSignUp.getText().toString());
                                 startActivity(signupClient);
 
                             } else {
 
-                                signupSeller.putExtra("userRol", userRol);
-                                signupSeller.putExtra("userFirstName", firsName.getText().toString());
-                                signupSeller.putExtra("userSecondName", secondName.getText().toString());
-                                signupSeller.putExtra("userMail", emailSignUp.getText().toString());
+                                signupSeller.putExtra(ConstantValues.USER_ROL_KEY, userRol);
+                                signupSeller.putExtra(ConstantValues.USER_FNAME_KEY, firsName.getText().toString());
+                                signupSeller.putExtra(ConstantValues.USER_SNAME_KEY, secondName.getText().toString());
+                                signupSeller.putExtra(ConstantValues.USER_MAIL_KEY, emailSignUp.getText().toString());
                                 startActivity(signupSeller);
 
                             }

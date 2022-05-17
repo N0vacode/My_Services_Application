@@ -32,6 +32,7 @@
     <string name="price">PRICE</string>
     <string name="search">Search</string>
 
+
     <string-array name="rol_user">
         <item>Client</item>
         <item>Seller</item>
@@ -61,6 +62,20 @@
         <item>Southland</item>
     </string-array>
 
+    <string-array name="category">
+        <item>Carpentry</item>
+        <item>Plumbing</item>
+        <item>Electricity</item>
+        <item>Electronics</item>
+        <item>Metalwork</item>
+        <item>Building</item>
+        <item>Mechanics</item>
+        <item>Technology</item>
+        <item>Health</item>
+        <item>Fashion</item>
+        <item>Art</item>
+
+    </string-array>
 
 
 </resources>
