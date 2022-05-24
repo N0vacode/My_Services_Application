@@ -18,7 +18,6 @@
         layout="@layout/activity_const_design" />
 
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -49,8 +48,8 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/spinner_theme"
-                    android:textColor="@color/black"
                     android:spinnerMode="dialog"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/text_hint" />
 
                 <EditText
@@ -62,6 +61,7 @@
                     android:hint="@string/business_name"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
+                    android:maxLength="35"
                     android:textSize="20dp" />
 
                 <EditText
@@ -80,26 +80,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <EditText
                         android:id="@+id/bsAbout"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/edittext_theme"
                         android:hint="@string/about_yout_business"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_hint"
+                        android:maxLength="250"
                         android:textSize="20dp" />
 
-                    <ImageView
-                        android:id="@+id/uploadBusinessImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/photo_business" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/uploadBusinessImage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/take_photo"
+                            android:contentDescription="TODO"
+                            tools:ignore="ContentDescription" />
+
+                        <Button
+                            android:id="@+id/takePhoto"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Select IMG"
+                            android:backgroundTint="@color/app_bar_color"
+                            android:textColor="@color/white"/>
+
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/bsCreate"
                     android:layout_width="120dp"
@@ -111,6 +136,7 @@
                     android:text="@string/create_account"
                     android:textColor="@color/white"
                     android:textSize="25dp" />
+
             </LinearLayout>
 
 

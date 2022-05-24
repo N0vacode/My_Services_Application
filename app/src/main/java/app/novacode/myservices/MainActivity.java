@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import app.novacode.myservices.adapter.Validation;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
+import app.novacode.myservices.pages.signup.SignUpSellerBusiness;
 import app.novacode.myservices.services.Login;
 import app.novacode.myservices.services.MD5C;
 
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences userPreferences;
     SharedPreferences.Editor editor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent signUpIntent = new Intent(this, SignUp.class);
         Intent passwordRecoveryIntent = new Intent(this, PasswordRecovery.class);
+
 
 
 
@@ -126,8 +130,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
 
     }

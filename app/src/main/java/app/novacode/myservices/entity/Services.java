@@ -5,19 +5,28 @@
 
 package app.novacode.myservices.entity;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import app.novacode.myservices.R;
+import app.novacode.myservices.repository.BusinessRepository;
+import app.novacode.myservices.services.ApiService;
 import app.novacode.myservices.services.CrudService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Services implements CrudService {
-    private int sId;
-    private String businessId;
-    private String sName;
-    private String sSpecifications;
-    private float sPrice;
-    private String sContract;
+
+    private int idService;
+    private String idBusiness;
+    private String nameService;
+    private String specializationService;
+    private float priceService;
+    private String contactService;
 
     private int idDrawable;
-
+    private boolean dones = false;
 
     //---------------------------------
     //Conductor Overload
@@ -25,23 +34,23 @@ public class Services implements CrudService {
     /**
      * Initial COnstructor for new Services
      * **/
-    public Services(String name, Seller seller, String specifications, float price, String constrac){
+    public Services(String name, BusinessRepository businessRepository, String specifications, float price, String constrac){
 
-        this.sName = name;
-        this.businessId = seller.getBid();
-        this.sSpecifications = specifications;
-        this.sPrice = price;
-        this.sContract = constrac;
+        this.nameService = name;
+        this.idBusiness = businessRepository.getBusinessId();
+        this.specializationService = specifications;
+        this.priceService = price;
+        this.contactService = constrac;
 
 
     }
 
 
     /**
-     * COnstructor for calll each services on dashboar
+     * Constructor for calll each services on Dashboard
      * **/
     public Services(String name, int idDrawable) {
-        this.sName = name;
+        this.nameService = name;
         this.idDrawable = idDrawable;
     }
 
@@ -56,7 +65,33 @@ public class Services implements CrudService {
 
 
     @Override
-    public void createService(Services service) {
+    public void createService(Services service, Context context) {
+
+
+        Call<Services> userRepositoryCall = ApiService.getUserService().saveServices(service);
+
+        userRepositoryCall.enqueue(new Callback<Services>() {
+
+            @Override
+            public void onResponse(Call<Services> call, Response<Services> response) {
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, "Done!!", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(context, "Could Not Create Service", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Services> call, Throwable t) {
+                System.out.println(t + " Services 89");
+//                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
 
 
     }
@@ -87,7 +122,7 @@ public class Services implements CrudService {
     @Override
     public Services getItem(int id) {
         for (Services item : ITEMS) {
-            if (item.getsId() == id) {
+            if (item.getIdService() == id) {
                 return item;
             }
         }
@@ -102,52 +137,52 @@ public class Services implements CrudService {
         return idDrawable;
     }
 
-    public int getsId() {
-        return sId;
+    public int getIdService() {
+        return idService;
     }
 
-    public void setsId(int sId) {
-        this.sId = sId;
+    public void setIdService(int idService) {
+        this.idService = idService;
     }
 
-    public String getBusinessId() {
-        return businessId;
+    public String getIdBusiness() {
+        return idBusiness;
     }
 
-    public void setBusinessId(String businessId) {
-        this.businessId = businessId;
+    public void setIdBusiness(String idBusiness) {
+        this.idBusiness = idBusiness;
     }
 
-    public String getsName() {
-        return sName;
+    public String getNameService() {
+        return nameService;
     }
 
-    public void setsName(String sName) {
-        this.sName = sName;
+    public void setNameService(String nameService) {
+        this.nameService = nameService;
     }
 
-    public String getsSpecifications() {
-        return sSpecifications;
+    public String getSpecializationService() {
+        return specializationService;
     }
 
-    public void setsSpecifications(String sSpecifications) {
-        this.sSpecifications = sSpecifications;
+    public void setSpecializationService(String specializationService) {
+        this.specializationService = specializationService;
     }
 
-    public float getsPrice() {
-        return sPrice;
+    public float getPriceService() {
+        return priceService;
     }
 
-    public void setsPrice(float sPrice) {
-        this.sPrice = sPrice;
+    public void setPriceService(float priceService) {
+        this.priceService = priceService;
     }
 
-    public String getsContract() {
-        return sContract;
+    public String getContactService() {
+        return contactService;
     }
 
-    public void setsContract(String sContract) {
-        this.sContract = sContract;
+    public void setContactService(String contactService) {
+        this.contactService = contactService;
     }
 
     public void setIdDrawable(int idDrawable) {

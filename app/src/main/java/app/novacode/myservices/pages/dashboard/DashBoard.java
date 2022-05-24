@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,17 +27,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelStore;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
 import app.novacode.myservices.adapter.GridAdapter;
-import app.novacode.myservices.databinding.ActivityMainBinding;
+//import app.novacode.myservices.databinding.ActivityMainBinding;
+import app.novacode.myservices.entity.Seller;
 import app.novacode.myservices.pages.specifications.ServiceEdit;
 import app.novacode.myservices.pages.specifications.ServiceInfo;
+import app.novacode.myservices.repository.BusinessRepository;
+import app.novacode.myservices.services.ApiService;
 import app.novacode.myservices.widgets.CreateServiceDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,11 +61,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     GridView servicesList;
-    ActivityMainBinding binding;
     EditText search;
     FloatingActionButton searchData;
-
-    TextView userName;
+    GridAdapter gridAdapter;
 
 
     SharedPreferences userPreferences;
@@ -60,7 +74,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_dash_board);
 
         userPreferences = this.getPreferences(Context.MODE_PRIVATE);
@@ -70,15 +83,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         app_bar = (Toolbar) findViewById(R.id.appBar);
         app_bar.setTitle("");
         app_bar.setSubtitle("");
+
         search = (EditText) findViewById(R.id.search);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        servicesList = (GridView) findViewById(R.id.servicesList);
+        servicesList = (GridView) findViewById(R.id.servicesList); // GridView
         searchData = (FloatingActionButton) findViewById(R.id.searchData);
 
         // TODO: Import data of login intent
-
-
-
 
 
 
@@ -92,117 +103,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-
-
-
-
-        String[] serviceNames = {
-                "Romy Dante Solutions Service Romy Dante Solutions Service",
-                "Romy Dante Solutions",
-                "Lily",
-                "Jasmine",
-                "Violete",
-                "Mar",
-                "Rose",
-                "Lotus",
-                "Lily",
-                "Romy Dante Solutions Service",
-                "Violete",
-                "Mar",
-                "Ocean",
-                "Snappa",
-                "Calamar",
-                "Rose",
-                "Lotus",
-                "Lily",
-                "Jasmine",
-                "Violete",
-                "Mar",
-                "Rose",
-                "Lotus",
-                "Lily",
-                "Jasmine",
-                "Violete",
-                "Mar",
-                "Romy Dante Solutions Service Romy Dante Solutions Service",
-                "Snappa",
-                "Calamar",
-                "Turutume"};
-        int[] serviceImage = {
-                R.drawable.ic_art,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_art,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_art,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_art,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_brasswork,
-                R.drawable.ic_carpenter,
-                R.drawable.ic_electronic};
-        int[] rates = {
-                R.drawable.rating,
-                R.drawable.rating1_5,
-                R.drawable.rating2,
-                R.drawable.rating5,
-                R.drawable.rating2,
-                R.drawable.rating3_5,
-                R.drawable.rating,
-                R.drawable.rating1_5,
-                R.drawable.rating2,
-                R.drawable.rating5,
-                R.drawable.rating2,
-                R.drawable.rating3_5,
-                R.drawable.rating,
-                R.drawable.rating1_5,
-                R.drawable.rating2,
-                R.drawable.rating5,
-                R.drawable.rating2,
-                R.drawable.rating3_5,
-                R.drawable.rating,
-                R.drawable.rating1_5,
-                R.drawable.rating2,
-                R.drawable.rating5,
-                R.drawable.rating2,
-                R.drawable.rating3_5,
-                R.drawable.rating,
-                R.drawable.rating1_5,
-                R.drawable.rating2,
-                R.drawable.rating5,
-                R.drawable.rating2,
-                R.drawable.rating3_5,
-                R.drawable.rating,
-                R.drawable.rating1_5,
-                R.drawable.rating2,
-                R.drawable.rating5,
-                R.drawable.rating2,
-                R.drawable.rating3_5};
-
-
-        GridAdapter gridAdapter = new GridAdapter(DashBoard.this, serviceNames, serviceImage,rates);
-        servicesList.setAdapter(gridAdapter);
-
         Intent myServicesList = new Intent(this, ServiceInfo.class);
+
+
+
 
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -215,6 +119,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
         });
+
+
 
 
         // Validation if is Seller or Client
@@ -236,10 +142,30 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
         }
 
-        inflateDrawerNameUser();
+
+
+
+
+        getBusiness();
 
     }
 
+
+
+    private void dataTEst(){
+        int[] rate = {R.drawable.rating4};
+
+        ArrayList<String> image = new ArrayList<String>();
+        image.add("http://172.245.226.231:8080/myservice/api/v1/BU002.png");
+        ArrayList<String> serviceName = new ArrayList<String>();
+        serviceName.add("Carpenter Nato");
+
+//        gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
+//        servicesList.setAdapter(gridAdapter);
+
+        System.out.println(image);
+
+    }
 
 
 
@@ -249,7 +175,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         return super.onCreateOptionsMenu(menu);
     }
-
 
 
     @SuppressLint("NonConstantResourceId")
@@ -277,28 +202,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     }
 
 
-
-
     public void createNewService() {
 
-        DialogFragment newFragment = new CreateServiceDialog();
+
+        int codeUser = Integer.parseInt(userPreferences.getString(ConstantValues.USER_ID_KEY, "0"));
+        String contact = userPreferences.getString(ConstantValues.USER_MAIL_KEY, "info@novacode.app");
+
+        DialogFragment newFragment = new CreateServiceDialog(codeUser, contact);
+
+
         newFragment.show(getSupportFragmentManager(), "New Service");
 
-    }
-
-
-    void inflateDrawerNameUser(){
-        //setContentView(R.layout.drawer_header);
-        LayoutInflater inflater = LayoutInflater.from(DashBoard.this);
-
-        final View v = inflater.inflate(R.layout.drawer_header, null).findViewById(R.id.userName);
-
-        TextView nav_playerid = (TextView) v;
-
-
-        nav_playerid.setText("New Data");
 
     }
+
 
     protected boolean haveSavedData(){
         return this.userPreferences.getBoolean(ConstantValues.SAVED_DATA_USER, false);
@@ -309,7 +226,82 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         editor.putString(ConstantValues.USER_MAIL_KEY, getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY)).apply();
         editor.putString(ConstantValues.USER_ROL_KEY, getIntent().getStringExtra(ConstantValues.USER_ROL_KEY)).apply();
         editor.putString(ConstantValues.USER_FNAME_KEY, getIntent().getStringExtra(ConstantValues.USER_FNAME_KEY)).apply();
+        editor.putString(ConstantValues.USER_ID_KEY, getIntent().getStringExtra(ConstantValues.USER_ID_KEY)).apply();
         editor.putBoolean(ConstantValues.SAVED_DATA_USER, true).apply();
+
+    }
+
+    private void getBusiness(){
+
+
+
+        Call<List<BusinessRepository>> userRepositoryCall = ApiService.getUserService().getBusinessData();
+
+        userRepositoryCall.enqueue(new Callback<List<BusinessRepository>>() {
+
+
+            @Override
+            public void onResponse(Call<List<BusinessRepository>> call, Response<List<BusinessRepository>> response) {
+
+                try{
+
+
+
+                    if(response.isSuccessful()){
+
+
+                        ArrayList<Double> rate =  new ArrayList<Double>();
+                        ArrayList<String> image = new ArrayList<String>();
+
+                        ArrayList<String> serviceName = new ArrayList<String>();
+
+
+                        for (int i = 0; i < response.body().size(); i++) {
+
+
+                            image.add(response.body().get(i).getImageUrl());
+                            serviceName.add(response.body().get(i).getBusinessName());
+                            rate.add(response.body().get(i).getRate());
+
+
+
+                        }
+
+
+                        gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
+                        servicesList.setAdapter(gridAdapter);
+
+
+//                        gridAdapter = new GridAdapter();
+//                        servicesList.setAdapter(gridAdapter);
+
+
+
+                    }
+
+
+                }catch (Exception e){
+
+                    System.out.println("Error: " + e.getMessage());
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<BusinessRepository>> call, Throwable t) {
+                t.printStackTrace();
+                System.out.println(t + " On Failure Dashboard 276");
+            }
+
+        });
+
+
+
+
+
 
     }
 

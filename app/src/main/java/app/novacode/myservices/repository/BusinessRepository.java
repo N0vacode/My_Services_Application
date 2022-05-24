@@ -5,72 +5,105 @@
 
 package app.novacode.myservices.repository;
 
-import app.novacode.myservices.services.CrudService;
 
-public abstract class BusinessRepository extends UserRepository{
+import org.json.JSONObject;
 
-    private String Bid;
-    private String bArea;
-    private String bName;
-    private String bMail;
-    private String bWebsite;
-    private String bAbout;
-    private String bImageUrl;
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+import java.util.Map;
+
+public class BusinessRepository {
+
+    private Integer sellerId;
+    private String businessId;
+    private String businessArea;
+    private String businessName;
+    private String businessWebsite;
+    private String businessAbout;
+    private String imageUrl;
+    private byte[] imageByte;
+    private double rate;
+    JSONObject sellerData;
 
 
-    public String getBid() {
-        return Bid;
+    public String getBusinessId() {
+        return businessId;
     }
 
-    public void setBid(String bid) {
-        Bid = bid;
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
     }
 
-    public String getbArea() {
-        return bArea;
+    public String getBusinessArea() {
+        return businessArea;
     }
 
-    public void setbArea(String bArea) {
-        this.bArea = bArea;
+    public void setBusinessArea(String businessArea) {
+        this.businessArea = businessArea;
     }
 
-    public String getbName() {
-        return bName;
+    public String getBusinessName() {
+        return businessName;
     }
 
-    public void setbName(String bName) {
-        this.bName = bName;
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
     }
 
-    public String getbMail() {
-        return bMail;
+    public String getBusinessWebsite() {
+        return businessWebsite;
     }
 
-    public void setbMail(String bMail) {
-        this.bMail = bMail;
+    public void setBusinessWebsite(String businessWebsite) {
+        this.businessWebsite = businessWebsite;
     }
 
-    public String getbWebsite() {
-        return bWebsite;
+    public String getBusinessAbout() {
+        return businessAbout;
     }
 
-    public void setbWebsite(String bWebsite) {
-        this.bWebsite = bWebsite;
+    public void setBusinessAbout(String businessAbout) {
+        this.businessAbout = businessAbout;
     }
 
-    public String getbAbout() {
-        return bAbout;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setbAbout(String bAbout) {
-        this.bAbout = bAbout;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getbImageUrl() {
-        return bImageUrl;
+    public Integer getSellerId() {
+        return sellerId;
     }
 
-    public void setbImageUrl(String bImageUrl) {
-        this.bImageUrl = bImageUrl;
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
+
+    public byte[] getImageByte() {
+        return imageByte;
+    }
+
+    public void setImageByte(byte[] imageByte) {
+        this.imageByte = imageByte;
+    }
+
+    public JSONObject getSellerData() {
+        return sellerData;
+    }
+
+    public void setSellerData(JSONObject sellerData) {
+        this.sellerData = sellerData;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 }

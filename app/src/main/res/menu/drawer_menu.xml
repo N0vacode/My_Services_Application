@@ -85,6 +85,14 @@
 
             </item>
 
+            <item
+                android:id="@+id/other"
+                android:title="Others"
+                android:icon="@drawable/ic_art"
+                >
+
+            </item>
+
         </menu>
 
     </item>

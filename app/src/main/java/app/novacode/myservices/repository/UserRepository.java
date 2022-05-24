@@ -30,6 +30,7 @@ import retrofit2.Response;
 public class UserRepository{
 
 
+    private int userId;
     private String userFirstName;
     private String userSecondName;
     private String userCity;
@@ -96,7 +97,7 @@ public class UserRepository{
 
             @Override
             public void onFailure(Call<UserRepository> call, Throwable t) {
-                System.out.println(t);
+                System.out.println(t + " User Repository 100");
 //                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
@@ -145,7 +146,7 @@ public class UserRepository{
 
             @Override
             public void onFailure(Call<Map<String, Object>> call, Throwable t) {
-                System.out.println(t);
+                System.out.println(t + " User `repository 149");
 //                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
@@ -185,7 +186,7 @@ public class UserRepository{
 
             @Override
             public void onFailure(Call<Map<String, Boolean>> call, Throwable t) {
-                System.out.println(t);
+                System.out.println(t + " User Repository 189");
             }
 
         });
@@ -269,5 +270,13 @@ public class UserRepository{
 
     public void setEmailReset(String emailReset) {
         this.emailReset = emailReset;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

@@ -146,7 +146,7 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-        System.out.println(adapterView.getItemAtPosition(i));
+       // System.out.println(adapterView.getItemAtPosition(i));
         adapterView.getItemAtPosition(i);
         userRol = adapterView.getItemAtPosition(i).toString();
 

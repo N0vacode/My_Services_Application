@@ -73,6 +73,7 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
 
                 MD5C.setUserData(rePasswordClient.getText().toString());
                 String passMd5 = MD5C.convert();
+
                 clientData.setUsRol(userRol);
                 clientData.setUsFirsName(userFirstName);
                 clientData.setUsSecondName(userSecondName);
@@ -115,7 +116,7 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
 //        System.out.println(adapterView.getItemAtPosition(i).toString());
 
         clientData.setUsCity(adapterView.getItemAtPosition(i).toString());
-        System.out.println( adapterView.getItemAtPosition(i).toString() );
+       // System.out.println( adapterView.getItemAtPosition(i).toString() );
         adapterView.getItemAtPosition(i);
 
     }

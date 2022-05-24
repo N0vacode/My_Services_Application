@@ -8,11 +8,14 @@ package app.novacode.myservices;
 public class ConstantValues {
 
     public final static String URL_API = "http://172.245.226.231:8080/myservice/api/v1/";
+    //public final static String URL_API = "http://localhost:8080/myservice/api/v1/";
+
     public final static String AUTH_API = "";
     public final static String HEADER_API = "";
-    public final static String SHARRED_P_MAIL = "myMail";
-    public final static String SHARRED_P_PASSWORD = "mayPassword";
     public final static String PATH_SIGNUP_CLIENT = "user/body";
+    public final static String PATH_SIGNUP_BUSINESS = "business";
+    public final static String PATH_SIGNUP_SERVICES = "service";
+    public final static String PATH_GET_BUSINESS = "business/all";
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
     public final static String PATH_EXIST_MAIL = "user/validate/{mail}";
     public final static String PATH_LOGIN = "user/login/{mail}/{password}";
@@ -31,6 +34,17 @@ public class ConstantValues {
     public final static String USER_PHONE_KEY = "userPhone";
     public final static String USER_PASS_KEY  = "userPassword";
     public final static String SAVED_DATA_USER = "userSaved";
+
+
+    // Values Key Business Seller
+    public final static String BUSINESS_NAME_KEY = "businessName";
+    public final static String BUSINESS_ABOUT_KEY = "businessAbout";
+    public final static String BUSINESS_AREA_KEY = "businessArea";
+    public final static String BUSINESS_WEBSITE_KEY = "businessWebsite";
+    public final static String BUSINESS_IMAGE_KEY = "imageUrl";
+    public final static String BUSINESS_ID_KEY = "businessId";
+
+
 
     // key for send validator code
     public final static String PATH_KEY_MAIL_RECOVERY = "emailReset";

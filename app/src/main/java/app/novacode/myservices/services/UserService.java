@@ -6,17 +6,23 @@
 package app.novacode.myservices.services;
 
 
+import java.util.List;
 import java.util.Map;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.entity.CodesValidator;
+import app.novacode.myservices.entity.Seller;
+import app.novacode.myservices.entity.Services;
 import app.novacode.myservices.pages.recovery.CodeValidator;
+import app.novacode.myservices.repository.BusinessRepository;
 import app.novacode.myservices.repository.UserRepository;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface UserService {
@@ -26,6 +32,12 @@ public interface UserService {
 
     @POST(ConstantValues.PATH_SEND_CODE)
     Call<Map<String, String>> sendCodeToRecoveryPassword(@Body Object mailToRecovery);
+
+    @POST(ConstantValues.PATH_SIGNUP_BUSINESS)
+    Call<BusinessRepository> saveBusiness(@Body BusinessRepository businessRepository);
+
+    @POST(ConstantValues.PATH_SIGNUP_SERVICES)
+    Call<Services> saveServices(@Body Services services);
 
 
     @PUT(ConstantValues.PATH_SEND_CODE)
@@ -47,6 +59,9 @@ public interface UserService {
 
     @GET(ConstantValues.PATH_GET_CODE_INFO)
     Call<CodesValidator> getCodesInfo(@Path("reset_code") String code);
+
+    @GET(ConstantValues.PATH_GET_BUSINESS)
+    Call<List<BusinessRepository>> getBusinessData();
 
 
 

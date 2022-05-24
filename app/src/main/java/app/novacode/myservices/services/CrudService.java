@@ -6,11 +6,13 @@
 package app.novacode.myservices.services;
 
 
+import android.content.Context;
+
 import app.novacode.myservices.entity.Services;
 
 public interface CrudService {
 
-    public void createService(Services service);
+    public void createService(Services service, Context context);
     public void updateService(Services service);
     public void deleteService(int serviceCode);
     public Services getItem(int id);

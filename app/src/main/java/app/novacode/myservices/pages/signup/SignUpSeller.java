@@ -61,13 +61,13 @@ public class SignUpSeller extends AppCompatActivity implements AdapterView.OnIte
 
 
                 bussinessRegister.putExtra(ConstantValues.USER_CITY_KEY, sellerData.getUsCity());
-                bussinessRegister.putExtra(ConstantValues.USER_PASS_KEY, sellerData.getUsPassword());
-                bussinessRegister.putExtra(ConstantValues.USER_PHONE_KEY, sellerData.getUsPhone());
+                bussinessRegister.putExtra(ConstantValues.USER_PASS_KEY, rePasswordSeller.getText().toString());
+                bussinessRegister.putExtra(ConstantValues.USER_PHONE_KEY, phoneSeller.getText().toString());
 
-                bussinessRegister.putExtra(ConstantValues.USER_FNAME_KEY,getIntent().getStringExtra(ConstantValues.USER_FNAME_KEY));
-                bussinessRegister.putExtra(ConstantValues.USER_SNAME_KEY,getIntent().getStringExtra(ConstantValues.USER_SNAME_KEY));
-                bussinessRegister.putExtra(ConstantValues.USER_MAIL_KEY,getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY));
-                bussinessRegister.putExtra(ConstantValues.USER_ROL_KEY,getIntent().getStringExtra(ConstantValues.USER_ROL_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_FNAME_KEY,getIntent().getExtras().getString(ConstantValues.USER_FNAME_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_SNAME_KEY,getIntent().getExtras().getString(ConstantValues.USER_SNAME_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_MAIL_KEY,getIntent().getExtras().getString(ConstantValues.USER_MAIL_KEY));
+                bussinessRegister.putExtra(ConstantValues.USER_ROL_KEY,getIntent().getExtras().getString(ConstantValues.USER_ROL_KEY));
 
                 startActivity(bussinessRegister);
 
@@ -83,7 +83,7 @@ public class SignUpSeller extends AppCompatActivity implements AdapterView.OnIte
 //        System.out.println(adapterView.getItemAtPosition(i).toString());
 
         sellerData.setUsCity(adapterView.getItemAtPosition(i).toString());
-        System.out.println( adapterView.getItemAtPosition(i).toString() );
+//        System.out.println( adapterView.getItemAtPosition(i).toString() );
         adapterView.getItemAtPosition(i);
 
     }

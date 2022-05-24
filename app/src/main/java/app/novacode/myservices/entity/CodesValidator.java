@@ -83,7 +83,7 @@ public class CodesValidator {
 
             @Override
             public void onFailure(Call<Map<String, String>> call, Throwable t) {
-                System.out.println(t);
+                System.out.println(t + " CodesValidator 86");
 //                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
@@ -175,7 +175,7 @@ public class CodesValidator {
 
             @Override
             public void onFailure(Call<CodesValidator> call, Throwable t) {
-                System.out.println(t);
+                System.out.println(t + " Codes Validator 178");
 //                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
