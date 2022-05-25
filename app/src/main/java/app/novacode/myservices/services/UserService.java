@@ -51,6 +51,9 @@ public interface UserService {
     @GET(ConstantValues.PATH_GET_EMAIL)
     Call<UserRepository> getAccountData(@Path("mail") String email);
 
+    @GET(ConstantValues.PATH_GET_SERVICE)
+    Call <List<Services>> getAllService(@Path("businessId") String businessId);
+
     @GET(ConstantValues.PATH_EXIST_MAIL)
     Call<Map<String, Boolean>> emailExist(@Path("mail") String mail);
 

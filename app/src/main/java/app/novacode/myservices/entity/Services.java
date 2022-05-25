@@ -86,7 +86,7 @@ public class Services implements CrudService {
 
             @Override
             public void onFailure(Call<Services> call, Throwable t) {
-                System.out.println(t + " Services 89");
+                System.out.println(t);
 //                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }

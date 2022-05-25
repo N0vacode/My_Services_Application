@@ -6,27 +6,60 @@
 package app.novacode.myservices.pages.specifications;
 
 import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
+import app.novacode.myservices.entity.Services;
 import app.novacode.myservices.pages.dashboard.DashBoard;
+import app.novacode.myservices.services.ApiService;
 import app.novacode.myservices.widgets.AlertMsm;
 import app.novacode.myservices.widgets.DialogType;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ServiceInfo extends AppCompatActivity {
 
     FloatingActionButton backButton;
     Button ratingDialogButton;
     RatingBar ratingBar;
-    int ratingB;
+
+
+    TextView aboutB;
+    ImageView imageB;
+    ImageView ratingB;
+    TextView nameB;
+    TextView websiteB;
+    TextView phoneB;
+    TextView mailB;
+    TextView cityB;
+
+
+
+    ArrayList<String> tittleService;
+    ArrayList<String> infoService;
+    ArrayList<Float> priceService;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +69,18 @@ public class ServiceInfo extends AppCompatActivity {
         backButton = (FloatingActionButton) findViewById(R.id.backButton);
         ratingDialogButton = (Button) findViewById(R.id.ratingDialogButton);
 
+        aboutB = (TextView) findViewById(R.id.aboutB);
+        imageB = (ImageView) findViewById(R.id.imageB);
+        ratingB = (ImageView) findViewById(R.id.ratingB);
+        nameB = (TextView) findViewById(R.id.nameB);
+        websiteB = (TextView) findViewById(R.id.websiteB);
+        phoneB = (TextView) findViewById(R.id.phoneB);
+        mailB = (TextView) findViewById(R.id.mailB);
+        cityB = (TextView) findViewById(R.id.cityB);
+
         Intent backDashboard = new Intent(this, DashBoard.class);
+
+
 
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -62,5 +106,138 @@ public class ServiceInfo extends AppCompatActivity {
                 //AlertMsm
             }
         });
+
+
+        try {
+            initializeBusinessData();
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
+    protected void initializeBusinessData() throws JSONException {
+
+
+        String phoneNumber = getIntent().getExtras().getString(ConstantValues.USER_PHONE_KEY);
+        String sellerMail = getIntent().getExtras().getString(ConstantValues.USER_MAIL_KEY).toLowerCase();
+        String cityBusiness = getIntent().getExtras().getString(ConstantValues.USER_CITY_KEY);
+        String website = getIntent().getExtras().getString(ConstantValues.BUSINESS_WEBSITE_KEY).toLowerCase();
+        String businessId = getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY);
+
+        Glide.with(this)
+                .load(getIntent().getExtras().getString(ConstantValues.BUSINESS_IMAGE_KEY))
+                .into(imageB);
+
+        aboutB.setText(getIntent().getExtras().getString(ConstantValues.BUSINESS_ABOUT_KEY));
+
+        ratingB.setImageResource(ConstantValues.rateBusiness(getIntent().getExtras().getDouble(ConstantValues.BUSINESS_RATE_KEY)));
+
+        nameB.setText(getIntent().getExtras().getString(ConstantValues.BUSINESS_NAME_KEY).toUpperCase());
+
+        // CLick on WEbsite link go to External Action website
+        websiteB.setText(website);
+        websiteB.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        websiteB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + website)));
+            }
+        });
+
+        phoneB.setText(phoneNumber);
+        phoneB.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        phoneB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(phoneNumber)));
+            }
+        });
+
+
+        mailB.setText(sellerMail);
+        mailB.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        mailB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_SEND, Uri.parse(sellerMail)));
+            }
+        });
+
+        cityB.setText(cityBusiness);
+        // CLicl on Call Number
+
+        //initializeServicesdata(businessId);
+
+
+
+
+
+
+
+    }
+
+
+
+    protected void initializeServicesdata(String buinessId){
+
+
+
+        Call<List<Services>> userRepositoryCall = ApiService.getUserService().getAllService(buinessId);
+
+        userRepositoryCall.enqueue(new Callback<List<Services>>() {
+
+
+            @Override
+            public void onResponse(Call<List<Services>> call, Response<List<Services>> response) {
+
+                try{
+
+
+
+
+                    if(response.isSuccessful()){
+
+
+                        for (int i = 0; i < response.body().size(); i++) {
+
+
+                            System.out.println(response.body().get(i).getNameService());
+                            tittleService.add(response.body().get(i).getNameService());
+                            infoService.add(response.body().get(i).getSpecializationService());
+                            priceService.add(response.body().get(i).getPriceService());
+                            //  System.out.println(response.body().get(i).getSellerData().get("usPhone"));
+                        }
+
+
+
+                    }
+
+
+                }catch (Exception e){
+
+                    System.out.println("Error: " + e.getMessage());
+
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Services>> call, Throwable t) {
+                t.printStackTrace();
+                System.out.println(t + " On Failure Dashboard 246");
+            }
+
+        });
+
+
+
+    }
+
+
 }

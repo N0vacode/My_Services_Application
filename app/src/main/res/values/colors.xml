@@ -12,7 +12,8 @@
     <color name="main_icon_background_green">#D6F1EC</color>
     <color name="text_hint">#57565D</color>
     <color name="app_bar_color">#00CFD5</color>
-    <color name="drawer_header_color">#F8A100</color>>
+    <color name="drawer_header_color">#F8A100</color>
+    <color name="website_coplor">#3305AA</color>
 
 
 

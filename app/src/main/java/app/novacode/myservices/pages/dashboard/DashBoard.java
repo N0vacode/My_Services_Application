@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelStore;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -38,7 +40,10 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
@@ -66,9 +71,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     GridAdapter gridAdapter;
 
 
+
     SharedPreferences userPreferences;
     SharedPreferences.Editor editor;
 
+
+    ArrayList<Double> rate =  new ArrayList<Double>();
+    ArrayList<String> image = new ArrayList<String>();
+    ArrayList<String> codeService = new ArrayList<String>();
+    ArrayList<String> serviceName = new ArrayList<String>(); // TODO: PONER EN SERVICES
+    ArrayList<String> aboutB = new ArrayList<String>();
+    ArrayList<String> websiteB = new ArrayList<String>();
+    String phoneB = "00 000000";
+    String myMail = "mymail@mail.com";
+    String cityB = "New Zealand";
 
 
     @Override
@@ -113,6 +129,23 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                view.setSelected(true);
+                final String idBusiness = codeService.get(i);
+                final double rateBusiness = rate.get(i);
+                final String nameBusiness = serviceName.get(i);
+                final String imageBusiness = image.get(i);
+                final String aboutBusiness = aboutB.get(i);
+                final String websiteBusiness = websiteB.get(i);
+
+                myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, idBusiness);
+                myServicesList.putExtra(ConstantValues.BUSINESS_RATE_KEY, rateBusiness);
+                myServicesList.putExtra(ConstantValues.BUSINESS_NAME_KEY, nameBusiness);
+                myServicesList.putExtra(ConstantValues.BUSINESS_IMAGE_KEY, imageBusiness);
+                myServicesList.putExtra(ConstantValues.BUSINESS_ABOUT_KEY, aboutBusiness);
+                myServicesList.putExtra(ConstantValues.BUSINESS_WEBSITE_KEY, websiteBusiness);
+                myServicesList.putExtra(ConstantValues.USER_PHONE_KEY,phoneB);
+                myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, myMail);
+                myServicesList.putExtra(ConstantValues.USER_CITY_KEY, cityB);
                 startActivity(myServicesList);
 
             }
@@ -147,23 +180,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
         getBusiness();
-
-    }
-
-
-
-    private void dataTEst(){
-        int[] rate = {R.drawable.rating4};
-
-        ArrayList<String> image = new ArrayList<String>();
-        image.add("http://172.245.226.231:8080/myservice/api/v1/BU002.png");
-        ArrayList<String> serviceName = new ArrayList<String>();
-        serviceName.add("Carpenter Nato");
-
-//        gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
-//        servicesList.setAdapter(gridAdapter);
-
-        System.out.println(image);
 
     }
 
@@ -250,10 +266,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     if(response.isSuccessful()){
 
 
-                        ArrayList<Double> rate =  new ArrayList<Double>();
-                        ArrayList<String> image = new ArrayList<String>();
 
-                        ArrayList<String> serviceName = new ArrayList<String>();
 
 
                         for (int i = 0; i < response.body().size(); i++) {
@@ -262,10 +275,15 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                             image.add(response.body().get(i).getImageUrl());
                             serviceName.add(response.body().get(i).getBusinessName());
                             rate.add(response.body().get(i).getRate());
-
-
-
+                            codeService.add(response.body().get(i).getBusinessId());
+                            aboutB.add(response.body().get(i).getBusinessAbout());
+                            websiteB.add(response.body().get(i).getBusinessWebsite());
+                            phoneB = String.valueOf(response.body().get(i).getSellerData().get("usPhone"));
+                            myMail = String.valueOf(response.body().get(i).getSellerData().get("usMail"));
+                            cityB  = String.valueOf(response.body().get(i).getSellerData().get("usCity"));
+                          //  System.out.println(response.body().get(i).getSellerData().get("usPhone"));
                         }
+
 
 
                         gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
@@ -307,3 +325,4 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
 }
+

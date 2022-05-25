@@ -16,6 +16,7 @@ public class ConstantValues {
     public final static String PATH_SIGNUP_BUSINESS = "business";
     public final static String PATH_SIGNUP_SERVICES = "service";
     public final static String PATH_GET_BUSINESS = "business/all";
+    public final static String PATH_GET_SERVICE = "service/business/{businessId}";
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
     public final static String PATH_EXIST_MAIL = "user/validate/{mail}";
     public final static String PATH_LOGIN = "user/login/{mail}/{password}";
@@ -43,10 +44,28 @@ public class ConstantValues {
     public final static String BUSINESS_WEBSITE_KEY = "businessWebsite";
     public final static String BUSINESS_IMAGE_KEY = "imageUrl";
     public final static String BUSINESS_ID_KEY = "businessId";
+    public final static String BUSINESS_RATE_KEY = "rate";
+    public final static String BUSINESS_SELLER_DATA_KEY = "sellerData";
 
 
 
     // key for send validator code
     public final static String PATH_KEY_MAIL_RECOVERY = "emailReset";
+
+    public static int rateBusiness(double rate){
+
+        if (rate == 1d) return R.drawable.rating1;
+        if (rate == 1.5d) return R.drawable.rating1_5;
+        if (rate == 2d) return R.drawable.rating2;
+        if (rate == 2.5d) return R.drawable.rating2_5;
+        if (rate == 3d) return R.drawable.rating3;
+        if (rate == 3.5d) return R.drawable.rating3_5;
+        if (rate == 4d) return R.drawable.rating4;
+        if (rate == 4.5) return R.drawable.rating4_5;
+        if (rate == 5) return R.drawable.rating5;
+        else
+            return R.drawable.rating;
+    }
+
 
 }

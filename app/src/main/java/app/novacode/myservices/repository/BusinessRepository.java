@@ -6,6 +6,7 @@
 package app.novacode.myservices.repository;
 
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -23,7 +24,7 @@ public class BusinessRepository {
     private String imageUrl;
     private byte[] imageByte;
     private double rate;
-    JSONObject sellerData;
+    Map<String,Object> sellerData;
 
 
     public String getBusinessId() {
@@ -91,13 +92,6 @@ public class BusinessRepository {
         this.imageByte = imageByte;
     }
 
-    public JSONObject getSellerData() {
-        return sellerData;
-    }
-
-    public void setSellerData(JSONObject sellerData) {
-        this.sellerData = sellerData;
-    }
 
     public double getRate() {
         return rate;
@@ -105,5 +99,13 @@ public class BusinessRepository {
 
     public void setRate(double rate) {
         this.rate = rate;
+    }
+
+    public Map<String, Object> getSellerData() {
+        return sellerData;
+    }
+
+    public void setSellerData(Map<String, Object> sellerData) {
+        this.sellerData = sellerData;
     }
 }

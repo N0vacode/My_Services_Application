@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
 import app.novacode.myservices.repository.BusinessRepository;
 import app.novacode.myservices.services.ApiService;
@@ -84,7 +85,7 @@ public class GridAdapter extends BaseAdapter {
 
 //        viewService.setImageURI(Uri.parse());
         nameService.setText(serviceName.get(i));
-        rates.setImageResource(rateBusiness(rate.get(i)));
+        rates.setImageResource(ConstantValues.rateBusiness(rate.get(i)));
 
 
         return view;
@@ -94,20 +95,6 @@ public class GridAdapter extends BaseAdapter {
 
     // Rating definet by each business
     // i think switch method is better
-    protected int rateBusiness(double rate){
-
-        if (rate == 1d) return R.drawable.rating1;
-        if (rate == 1.5d) return R.drawable.rating1_5;
-        if (rate == 2d) return R.drawable.rating2;
-        if (rate == 2.5d) return R.drawable.rating2_5;
-        if (rate == 3d) return R.drawable.rating3;
-        if (rate == 3.5d) return R.drawable.rating3_5;
-        if (rate == 4d) return R.drawable.rating4;
-        if (rate == 4.5) return R.drawable.rating4_5;
-        if (rate == 5) return R.drawable.rating5;
-        else
-            return R.drawable.rating;
-    }
 
 
 

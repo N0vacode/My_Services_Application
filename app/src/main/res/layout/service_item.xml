@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) $2019 NovaCode All Rights Reserved
+  ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+<LinearLayout
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tittleService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mechanic"
+        android:textColor="@color/drawer_header_color"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/infoService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="is nting and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,mbled it to make a type specimen book. It has survived not onmbled it to make a type specimen book. It has survived not on changed. It was popularase of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+
+    <TextView
+        android:id="@+id/priceService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$23/h"
+        android:textSize="20dp"
+        android:textColor="@color/app_bar_color"
+        android:textStyle="bold" />
+
+</LinearLayout>
+</RelativeLayout>
