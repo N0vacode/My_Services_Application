@@ -6,6 +6,7 @@
 package app.novacode.myservices.pages.specifications;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,10 +27,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
+import app.novacode.myservices.adapter.RecyclerViewAdapter;
 import app.novacode.myservices.entity.Services;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.services.ApiService;
@@ -55,9 +60,14 @@ public class ServiceInfo extends AppCompatActivity {
 
 
 
-    ArrayList<String> tittleService;
-    ArrayList<String> infoService;
-    ArrayList<Float> priceService;
+    ArrayList<String> tittleService = new ArrayList<>();
+    ArrayList<String> infoService = new ArrayList<>();
+    ArrayList<Float> priceService = new ArrayList<>();
+
+    RecyclerView recyclerView;
+    LinearLayoutManager horizontalLayoutManager;
+
+    private RecyclerViewAdapter adapter;
 
 
 
@@ -81,7 +91,9 @@ public class ServiceInfo extends AppCompatActivity {
         Intent backDashboard = new Intent(this, DashBoard.class);
 
 
-
+        recyclerView = findViewById(R.id.myRecyclerView);
+        horizontalLayoutManager = new LinearLayoutManager(ServiceInfo.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(horizontalLayoutManager);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +139,7 @@ public class ServiceInfo extends AppCompatActivity {
         String cityBusiness = getIntent().getExtras().getString(ConstantValues.USER_CITY_KEY);
         String website = getIntent().getExtras().getString(ConstantValues.BUSINESS_WEBSITE_KEY).toLowerCase();
         String businessId = getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY);
+        initializeServicesdata(businessId);
 
         Glide.with(this)
                 .load(getIntent().getExtras().getString(ConstantValues.BUSINESS_IMAGE_KEY))
@@ -170,7 +183,7 @@ public class ServiceInfo extends AppCompatActivity {
         cityB.setText(cityBusiness);
         // CLicl on Call Number
 
-        //initializeServicesdata(businessId);
+
 
 
 
@@ -202,17 +215,19 @@ public class ServiceInfo extends AppCompatActivity {
                     if(response.isSuccessful()){
 
 
+
                         for (int i = 0; i < response.body().size(); i++) {
 
 
-                            System.out.println(response.body().get(i).getNameService());
                             tittleService.add(response.body().get(i).getNameService());
                             infoService.add(response.body().get(i).getSpecializationService());
                             priceService.add(response.body().get(i).getPriceService());
-                            //  System.out.println(response.body().get(i).getSellerData().get("usPhone"));
                         }
 
 
+
+                        adapter = new RecyclerViewAdapter(ServiceInfo.this, tittleService, infoService, priceService);
+                        recyclerView.setAdapter(adapter);
 
                     }
 
@@ -220,6 +235,7 @@ public class ServiceInfo extends AppCompatActivity {
                 }catch (Exception e){
 
                     System.out.println("Error: " + e.getMessage());
+                    Toast.makeText(ServiceInfo.this, "This seller has not added services", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -229,9 +245,7 @@ public class ServiceInfo extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Services>> call, Throwable t) {
-                t.printStackTrace();
-                System.out.println(t + " On Failure Dashboard 246");
-            }
+                t.printStackTrace();}
 
         });
 

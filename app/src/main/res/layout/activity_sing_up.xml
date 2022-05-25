@@ -21,6 +21,7 @@
         android:layout_marginRight="20dp"
         android:text="@string/login_return"
         android:textColor="@color/purple_700"
+
         android:textSize="20dp" />
 
 
@@ -93,6 +94,7 @@
                     android:hint="@string/email_hint"
                     android:textColor="@color/black"
                     android:textColorHint="@color/text_hint"
+                    android:inputType="textEmailAddress"
                     android:textSize="20dp" />
 
                 <TextView
