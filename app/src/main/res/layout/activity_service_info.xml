@@ -144,6 +144,8 @@
                         android:layout_marginLeft="10dp"
                         android:text="nativecode@natice.app"
                         android:textIsSelectable="true"
+                        android:textStyle="bold"
+                        android:textColor="@color/website_coplor"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -152,7 +154,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -178,7 +181,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
 
                     <ImageView
                         android:layout_width="20dp"

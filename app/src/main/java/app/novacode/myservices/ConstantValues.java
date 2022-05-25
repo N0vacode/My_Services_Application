@@ -23,6 +23,7 @@ public class ConstantValues {
     public final static String PATH_SEND_CODE = "reset_password";
     public final static String PATH_GET_CODE_INFO = "reset_password/info_code/{reset_code}";
     public final static String PATH_USER_MAIN = "user";
+    public final static String PATH_SEND_RATE = "rate";
 
 
     // Value Key User Client
@@ -32,6 +33,7 @@ public class ConstantValues {
     public final static String USER_SNAME_KEY = "userSecondName";
     public final static String USER_CITY_KEY  = "userCity";
     public final static String USER_MAIL_KEY  = "userMail";
+    public final static String CLIENT_MAIL_KEY  = "userMail";
     public final static String USER_PHONE_KEY = "userPhone";
     public final static String USER_PASS_KEY  = "userPassword";
     public final static String SAVED_DATA_USER = "userSaved";

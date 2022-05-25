@@ -44,6 +44,7 @@
         <entry key="app/src/main/res/layout/grid_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/main_drawer_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/rate_button.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/rate_service.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/rating_service.xml" value="0.335" />
         <entry key="app/src/main/res/layout/register_service_dialog.xml" value="0.165" />
         <entry key="app/src/main/res/layout/service_item.xml" value="0.21354166666666666" />

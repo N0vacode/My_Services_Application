@@ -38,6 +38,7 @@ import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.services.ApiService;
 import app.novacode.myservices.widgets.AlertMsm;
 import app.novacode.myservices.widgets.DialogType;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,8 +47,6 @@ public class ServiceInfo extends AppCompatActivity {
 
     FloatingActionButton backButton;
     Button ratingDialogButton;
-    RatingBar ratingBar;
-
 
     TextView aboutB;
     ImageView imageB;
@@ -104,13 +103,20 @@ public class ServiceInfo extends AppCompatActivity {
             }
         });
 
+
+
         ratingDialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //TODO: Make Rating data
+
+
+
+//                //Send data to Rate Client
                 AlertMsm newFragment = new AlertMsm("Rating",
-                        "Add a rating for this seller of service, remember that this rating should be based on your experience using the service, attention and prices compared to quality.");
+                        "Add a rating for this seller of service, remember that this rating should be based on your experience using the service, attention and prices compared to quality.",
+                        getIntent().getExtras().getString(ConstantValues.CLIENT_MAIL_KEY).toLowerCase(),
+                        getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY));
                 newFragment.setDialogType(DialogType.RATE);
                 newFragment.show(getSupportFragmentManager(), "Rate Service");
 
@@ -146,42 +152,26 @@ public class ServiceInfo extends AppCompatActivity {
                 .into(imageB);
 
         aboutB.setText(getIntent().getExtras().getString(ConstantValues.BUSINESS_ABOUT_KEY));
-
         ratingB.setImageResource(ConstantValues.rateBusiness(getIntent().getExtras().getDouble(ConstantValues.BUSINESS_RATE_KEY)));
-
         nameB.setText(getIntent().getExtras().getString(ConstantValues.BUSINESS_NAME_KEY).toUpperCase());
 
-        // CLick on WEbsite link go to External Action website
+        // CLick on Website link go to External Action website
         websiteB.setText(website);
         websiteB.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + website));
+
         websiteB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + website)));
+
+                startActivity(intent);
+
             }
         });
 
         phoneB.setText(phoneNumber);
-        phoneB.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-        phoneB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(phoneNumber)));
-            }
-        });
-
-
         mailB.setText(sellerMail);
-        mailB.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-        mailB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_SEND, Uri.parse(sellerMail)));
-            }
-        });
-
         cityB.setText(cityBusiness);
-        // CLicl on Call Number
 
 
 

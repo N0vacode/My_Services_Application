@@ -82,9 +82,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     ArrayList<String> serviceName = new ArrayList<String>(); // TODO: PONER EN SERVICES
     ArrayList<String> aboutB = new ArrayList<String>();
     ArrayList<String> websiteB = new ArrayList<String>();
-    String phoneB = "00 000000";
-    String myMail = "mymail@mail.com";
-    String cityB = "New Zealand";
+    ArrayList<String> phoneB = new ArrayList<String>();
+    ArrayList<String> myMail = new ArrayList<String>();
+    ArrayList<String> cityB = new ArrayList<String>();
 
 
     @Override
@@ -105,10 +105,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         servicesList = (GridView) findViewById(R.id.servicesList); // GridView
         searchData = (FloatingActionButton) findViewById(R.id.searchData);
 
-        // TODO: Import data of login intent
-
-
-
+        // Start Import Data Sellers
         navigationView.setFitsSystemWindows(true);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -128,6 +125,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String userMail = userPreferences.getString(ConstantValues.USER_MAIL_KEY, ConstantValues.USER_MAIL_KEY);
 
                 view.setSelected(true);
                 final String idBusiness = codeService.get(i);
@@ -143,9 +141,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 myServicesList.putExtra(ConstantValues.BUSINESS_IMAGE_KEY, imageBusiness);
                 myServicesList.putExtra(ConstantValues.BUSINESS_ABOUT_KEY, aboutBusiness);
                 myServicesList.putExtra(ConstantValues.BUSINESS_WEBSITE_KEY, websiteBusiness);
-                myServicesList.putExtra(ConstantValues.USER_PHONE_KEY,phoneB);
-                myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, myMail);
-                myServicesList.putExtra(ConstantValues.USER_CITY_KEY, cityB);
+                myServicesList.putExtra(ConstantValues.USER_PHONE_KEY,phoneB.get(i));
+                myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, myMail.get(i));
+                myServicesList.putExtra(ConstantValues.USER_CITY_KEY, cityB.get(i));
+                myServicesList.putExtra(ConstantValues.CLIENT_MAIL_KEY, userMail);
+
                 startActivity(myServicesList);
 
             }
@@ -278,9 +278,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                             codeService.add(response.body().get(i).getBusinessId());
                             aboutB.add(response.body().get(i).getBusinessAbout());
                             websiteB.add(response.body().get(i).getBusinessWebsite());
-                            phoneB = String.valueOf(response.body().get(i).getSellerData().get("usPhone"));
-                            myMail = String.valueOf(response.body().get(i).getSellerData().get("usMail"));
-                            cityB  = String.valueOf(response.body().get(i).getSellerData().get("usCity"));
+                            phoneB.add(String.valueOf(response.body().get(i).getSellerData().get("usPhone")));
+                            myMail.add(String.valueOf(response.body().get(i).getSellerData().get("usMail")));
+                            cityB.add(String.valueOf(response.body().get(i).getSellerData().get("usCity")));
                           //  System.out.println(response.body().get(i).getSellerData().get("usPhone"));
                         }
 

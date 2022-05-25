@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import app.novacode.myservices.ConstantValues;
-import app.novacode.myservices.repository.UserRepository;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -46,9 +45,9 @@ public class ApiService {
 
 
     //Return User services by retrofit POST, GET, PUT, DELETE Method using OkHttp for build, and convert data Gson
-    public static UserService getUserService(){
+    public static ServiceController getUserService(){
 
-        return getRetrofit().create(UserService.class);
+        return getRetrofit().create(ServiceController.class);
 
     }
 

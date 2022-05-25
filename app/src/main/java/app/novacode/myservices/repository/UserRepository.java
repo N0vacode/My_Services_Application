@@ -20,6 +20,7 @@ import java.util.Map;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.MainActivity;
+import app.novacode.myservices.entity.Client;
 import app.novacode.myservices.pages.recovery.CodeValidator;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.services.ApiService;
@@ -159,7 +160,8 @@ public class UserRepository{
 
     }
 
-    public void mailExist( String email ) throws InterruptedException {
+    public void mailExist(String email ) throws InterruptedException {
+
         Call<Map<String, Boolean>> userRepositoryCall = ApiService.getUserService().emailExist(email);
 
         userRepositoryCall.enqueue(new Callback<Map<String, Boolean>>() {

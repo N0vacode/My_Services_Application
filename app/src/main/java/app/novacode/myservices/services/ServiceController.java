@@ -11,6 +11,7 @@ import java.util.Map;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.entity.CodesValidator;
+import app.novacode.myservices.entity.Rating;
 import app.novacode.myservices.entity.Seller;
 import app.novacode.myservices.entity.Services;
 import app.novacode.myservices.pages.recovery.CodeValidator;
@@ -25,7 +26,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
-public interface UserService {
+public interface ServiceController {
 
     @POST(ConstantValues.PATH_SIGNUP_CLIENT)
     Call<UserRepository> creteAccount(@Body Object userRepository);
@@ -39,6 +40,8 @@ public interface UserService {
     @POST(ConstantValues.PATH_SIGNUP_SERVICES)
     Call<Services> saveServices(@Body Services services);
 
+    @POST(ConstantValues.PATH_SEND_RATE)
+    Call<Map<String, Object>> sendRate(@Body Rating rating);
 
     @PUT(ConstantValues.PATH_SEND_CODE)
     Call<CodesValidator> sendPutCode(@Body CodesValidator codesValidator);
