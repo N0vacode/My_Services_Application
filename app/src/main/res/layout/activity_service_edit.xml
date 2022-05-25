@@ -35,7 +35,10 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/color_border" />
+        android:background="@drawable/color_border"
+        android:divider="#00C5CD"
+        android:dividerHeight="1dp"
+        android:listSelector="#F69E00"/>
 
 
 </RelativeLayout>

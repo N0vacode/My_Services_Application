@@ -86,6 +86,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     ArrayList<String> myMail = new ArrayList<String>();
     ArrayList<String> cityB = new ArrayList<String>();
 
+    String myBID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,15 +200,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Intent myServicesList = new Intent(DashBoard.this, ServiceEdit.class);
-
+        myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, userPreferences.getString(ConstantValues.BUSINESS_ID_KEY, ConstantValues.BUSINESS_ID_KEY));
+        myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY));
         switch(item.getItemId()){
 
             case R.id.newService:
+
                 createNewService();
+
                 break;
 
             case R.id.myServices:
+
                 startActivity(myServicesList);
+
                 break;
 
             default:
@@ -281,7 +288,16 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                             phoneB.add(String.valueOf(response.body().get(i).getSellerData().get("usPhone")));
                             myMail.add(String.valueOf(response.body().get(i).getSellerData().get("usMail")));
                             cityB.add(String.valueOf(response.body().get(i).getSellerData().get("usCity")));
-                          //  System.out.println(response.body().get(i).getSellerData().get("usPhone"));
+
+
+                            if(Integer.parseInt(String.valueOf(response.body().get(i).getSellerId())) ==  Integer.parseInt(userPreferences.getString(ConstantValues.USER_ID_KEY, ConstantValues.USER_ID_KEY))){
+                                myBID = response.body().get(i).getBusinessId();
+
+                                editor.putString(ConstantValues.BUSINESS_ID_KEY, response.body().get(i).getBusinessId());
+                            }
+
+
+
                         }
 
 

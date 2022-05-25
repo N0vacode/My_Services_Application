@@ -26,6 +26,7 @@ public class ConstantValues {
     public final static String PATH_SEND_RATE = "rate";
 
 
+
     // Value Key User Client
     public final static String USER_ROL_KEY   = "userRol";
     public final static String USER_ID_KEY    = "userId";
