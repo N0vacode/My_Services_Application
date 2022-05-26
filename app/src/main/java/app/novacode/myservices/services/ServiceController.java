@@ -69,6 +69,9 @@ public interface ServiceController {
     @GET(ConstantValues.PATH_GET_BUSINESS)
     Call<List<BusinessRepository>> getBusinessData();
 
+    @GET(ConstantValues.PATH_GET_BUSINESS_BY_NAME)
+    Call<List<BusinessRepository>> getBusinessDataByName(@Path("bName") String name);
+
 
 
     @DELETE(ConstantValues.PATH_DELETE_SERVICES)

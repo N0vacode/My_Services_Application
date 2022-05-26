@@ -141,7 +141,7 @@ public class Services implements CrudService {
 
         Intent servicesList = new Intent(context, DashBoard.class);
 
-        Call<Boolean> userRepositoryCall = ApiService.getUserService().deleteService(1);
+        Call<Boolean> userRepositoryCall = ApiService.getUserService().deleteService(serviceCode);
 
         userRepositoryCall.enqueue(new Callback<Boolean>() {
 

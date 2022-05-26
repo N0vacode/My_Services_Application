@@ -89,14 +89,15 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         app_bar.setSubtitle("");
 
         search = (EditText) findViewById(R.id.search);
+        searchData = (FloatingActionButton) findViewById(R.id.searchData);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         servicesList = (GridView) findViewById(R.id.servicesList); // GridView
-        searchData = (FloatingActionButton) findViewById(R.id.searchData);
+
 
         // Start Import Data Sellers
         navigationView.setFitsSystemWindows(true);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         setSupportActionBar(app_bar);
 
@@ -104,8 +105,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        Intent myServicesList = new Intent(this, ServiceInfo.class);
 
+        Intent myServicesList = new Intent(this, ServiceInfo.class);
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -159,6 +160,26 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         }
 
         getBusiness();
+
+
+
+
+        searchData.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                //Cleanin Values
+                serviceName.clear();
+                image.clear();
+                rate.clear();
+
+
+                getBusiness();
+
+            }
+
+        });
 
     }
 
@@ -233,10 +254,16 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     private void getBusiness(){
 
+        Call<List<BusinessRepository>> userRepositoryCall;
 
+        if( search.getText().toString().isEmpty() ){
 
-        Call<List<BusinessRepository>> userRepositoryCall = ApiService.getUserService().getBusinessData();
+            userRepositoryCall = ApiService.getUserService().getBusinessData();
 
+        }else {
+
+            userRepositoryCall = ApiService.getUserService().getBusinessDataByName( search.getText().toString() );
+        }
         userRepositoryCall.enqueue(new Callback<List<BusinessRepository>>() {
 
 
@@ -282,6 +309,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
                         servicesList.setAdapter(gridAdapter);
 
+                        if(response.body().isEmpty())
+                            Toast.makeText(DashBoard.this, "No Matches for: " + search.getText().toString(), Toast.LENGTH_SHORT).show();
 
 //                        gridAdapter = new GridAdapter();
 //                        servicesList.setAdapter(gridAdapter);

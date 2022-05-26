@@ -17,6 +17,7 @@ public class ConstantValues {
     public final static String PATH_SIGNUP_SERVICES = "service";
     public final static String PATH_DELETE_SERVICES = "service/{id}";
     public final static String PATH_GET_BUSINESS = "business/all";
+    public final static String PATH_GET_BUSINESS_BY_NAME = "business/name/{bName}";
     public final static String PATH_GET_SERVICE = "service/business/{businessId}";
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
     public final static String PATH_EXIST_MAIL = "user/validate/{mail}";
