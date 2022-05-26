@@ -10,16 +10,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,29 +24,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelStore;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
 import app.novacode.myservices.adapter.GridAdapter;
 //import app.novacode.myservices.databinding.ActivityMainBinding;
-import app.novacode.myservices.entity.Seller;
-import app.novacode.myservices.pages.specifications.ServiceEdit;
+import app.novacode.myservices.pages.specifications.ServiceList;
 import app.novacode.myservices.pages.specifications.ServiceInfo;
 import app.novacode.myservices.repository.BusinessRepository;
 import app.novacode.myservices.services.ApiService;
@@ -199,8 +184,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        Intent myServicesList = new Intent(DashBoard.this, ServiceEdit.class);
-        myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, userPreferences.getString(ConstantValues.BUSINESS_ID_KEY, ConstantValues.BUSINESS_ID_KEY));
+        Intent myServicesList = new Intent(DashBoard.this, ServiceList.class);
+        myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, myBID);
         myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY));
         switch(item.getItemId()){
 

@@ -22,7 +22,6 @@ import java.util.List;
 
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.R;
-import app.novacode.myservices.adapter.RecyclerViewAdapter;
 import app.novacode.myservices.entity.Services;
 import app.novacode.myservices.pages.dashboard.DashBoard;
 import app.novacode.myservices.services.ApiService;
@@ -30,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ServiceEdit extends AppCompatActivity {
+public class ServiceList extends AppCompatActivity {
 
     FloatingActionButton backButton2 ;
     ListView servicesListSeller;
@@ -67,14 +66,14 @@ public class ServiceEdit extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(ServiceEdit.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_LONG).show();
-                Toast.makeText(ServiceEdit.this, "Index: " + idAService.get(i), Toast.LENGTH_LONG).show();
+                Toast.makeText(ServiceList.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ServiceList.this, "Index: " + idAService.get(i), Toast.LENGTH_LONG).show();
 
 
             }
         });
 
-        initializeServicesdata("BU001");
+        initializeServicesdata(getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY));
 
 
     }
@@ -121,7 +120,7 @@ public class ServiceEdit extends AppCompatActivity {
                         }
 
 
-                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ServiceEdit.this,android.R.layout.simple_list_item_1, arrayList);
+                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ServiceList.this,android.R.layout.simple_list_item_1, arrayList);
                         servicesListSeller.setAdapter(arrayAdapter);
 
 //
