@@ -75,10 +75,6 @@ public class SignUpSellerBusiness extends AppCompatActivity implements AdapterVi
 
 
 
-        //TODO: CREATE A IMPORT DATA, UPLOAD IMAGE, REGISTER USER AND BUSSINESS
-        // TODO; MODIFY BACKEND FOR REGISTER SELLER AND BUSINESS
-
-
         String userRol = getIntent().getExtras().getString(ConstantValues.USER_ROL_KEY);
         String userFirstName = getIntent().getExtras().getString(ConstantValues.USER_FNAME_KEY);
         String userSecondName = getIntent().getExtras().getString(ConstantValues.USER_SNAME_KEY);
@@ -94,7 +90,6 @@ public class SignUpSellerBusiness extends AppCompatActivity implements AdapterVi
                 String passMd5 = MD5C.convert();
 
 
-                // TODO CREAR SELLER
 
                 seller.setUsRol(userRol);
                 seller.setUsFirsName(userFirstName);

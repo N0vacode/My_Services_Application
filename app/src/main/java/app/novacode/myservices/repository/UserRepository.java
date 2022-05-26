@@ -44,34 +44,6 @@ public class UserRepository{
 
     private boolean mailExist;
 
-    public void getUser(Context context, String email){
-
-        Call<UserRepository> userRepositoryCall = ApiService.getUserService().getAccountData(email);
-
-        userRepositoryCall.enqueue(new Callback<UserRepository>() {
-            @Override
-            public void onResponse(Call<UserRepository> call, Response<UserRepository> response) {
-
-                if(response.isSuccessful()){
-
-                    //TODO: SERIALIZE USER DATA
-
-                }else{
-
-                    Toast.makeText(context, "We couldn't check your email", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserRepository> call, Throwable t) {
-
-                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-    }
 
 
     public void signUpUser(Context context, Object userData){
@@ -118,7 +90,6 @@ public class UserRepository{
         Intent intentMainActivity = new Intent(context, MainActivity.class);
 
 
-        // todo se debe enviar el mail y el password
         Call<Map<String, Object>> userRepositoryCall = ApiService.getUserService().putPassword(mailData);
 
         userRepositoryCall.enqueue(new Callback<Map<String, Object>>() {
@@ -133,8 +104,6 @@ public class UserRepository{
                     context.startActivity(intentMainActivity);
 
                     if(response.body().get("statusPassword") != null) {
-
-                        //TODO: CHANGE FOR DIALOG -> [Becuase the password is changed and need clear information] Include ok button
 
                         Toast.makeText(context, response.body().get("statusPassword").toString(), Toast.LENGTH_SHORT).show();
 

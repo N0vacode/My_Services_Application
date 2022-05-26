@@ -92,7 +92,7 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
                         Validation.data( emailSignUp, "you must write a SECOND NAME", "mail" )) {
 
 
-                    // TODO ARREGLAR COMPROBACION DE MAIL
+                    // TODO NEED FIX A VERIFY EMAIL
 
 
                         if (  !client.isMailExist() ) {
@@ -142,19 +142,12 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
 
     }
 
-    // TODO ESPABLECER REGLAS PARA SELECCION DATOS
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-       // System.out.println(adapterView.getItemAtPosition(i));
         adapterView.getItemAtPosition(i);
         userRol = adapterView.getItemAtPosition(i).toString();
-
-//        if(adapterView.getItemAtPosition(i).equals("Client") || adapterView.getItemAtPosition(i).equals("Seller")){
-//
-//        }else{
-//            Toast.makeText(SignUp.this,"Shoulbe select a rol",Toast.LENGTH_LONG ).show();
-//        }
 
 
     }

@@ -105,8 +105,6 @@ public class SignUpClient extends AppCompatActivity implements AdapterView.OnIte
                     }
                 }
 
-
-                //TODO Create function for singup client
             }
         });
     }

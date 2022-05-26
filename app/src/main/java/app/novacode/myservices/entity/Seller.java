@@ -101,7 +101,7 @@ public class Seller extends UserRepository {
 
             @Override
             public void onFailure(@NonNull Call<BusinessRepository> call, @NonNull Throwable t) {
-                // todo: Problema de formato de imagen BEGIN_ARRAY
+
                 System.out.println(t + " Seller 86");
                 context.startActivity(intentMainActivity);
                 Toast.makeText(context, "Done!", Toast.LENGTH_SHORT).show();

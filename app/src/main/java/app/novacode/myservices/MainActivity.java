@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         if( haveSavedData() ) {
 
-            // TODO: Create a circular Prgress Indicator
             Login.user(MainActivity.this, userPreferences.getString(ConstantValues.USER_MAIL_KEY, ConstantValues.USER_MAIL_KEY),
                     userPreferences.getString(ConstantValues.USER_PASS_KEY, ConstantValues.USER_PASS_KEY));
         }

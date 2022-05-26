@@ -65,7 +65,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     ArrayList<Double> rate =  new ArrayList<Double>();
     ArrayList<String> image = new ArrayList<String>();
     ArrayList<String> codeService = new ArrayList<String>();
-    ArrayList<String> serviceName = new ArrayList<String>(); // TODO: PONER EN SERVICES
+    ArrayList<String> serviceName = new ArrayList<String>();
     ArrayList<String> aboutB = new ArrayList<String>();
     ArrayList<String> websiteB = new ArrayList<String>();
     ArrayList<String> phoneB = new ArrayList<String>();

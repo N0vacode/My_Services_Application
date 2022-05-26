@@ -40,7 +40,7 @@ public class PasswordRecovery extends AppCompatActivity {
                 userRecovery.setEmailReset(mailAccountRecovery.getText().toString());
 
                 codesValidator.sendCodeToMail(PasswordRecovery.this, userRecovery);
-                // Todo: Create send code to restore password.
+
 
             }
 
