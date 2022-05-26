@@ -20,6 +20,7 @@ import app.novacode.myservices.repository.UserRepository;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -39,6 +40,9 @@ public interface ServiceController {
 
     @POST(ConstantValues.PATH_SIGNUP_SERVICES)
     Call<Services> saveServices(@Body Services services);
+
+    @PUT(ConstantValues.PATH_SIGNUP_SERVICES)
+    Call<Services> updateService(@Body Services services);
 
     @POST(ConstantValues.PATH_SEND_RATE)
     Call<Map<String, Object>> sendRate(@Body Rating rating);
@@ -68,6 +72,11 @@ public interface ServiceController {
 
     @GET(ConstantValues.PATH_GET_BUSINESS)
     Call<List<BusinessRepository>> getBusinessData();
+
+
+
+    @DELETE(ConstantValues.PATH_DELETE_SERVICES)
+    Call<Boolean> deleteService(@Path("id") Integer serviceId);
 
 
 

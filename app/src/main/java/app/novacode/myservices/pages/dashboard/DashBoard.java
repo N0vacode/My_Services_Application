@@ -37,6 +37,7 @@ import app.novacode.myservices.adapter.GridAdapter;
 //import app.novacode.myservices.databinding.ActivityMainBinding;
 import app.novacode.myservices.pages.specifications.ServiceList;
 import app.novacode.myservices.pages.specifications.ServiceInfo;
+import app.novacode.myservices.pages.specifications.ServiceUpdate;
 import app.novacode.myservices.repository.BusinessRepository;
 import app.novacode.myservices.services.ApiService;
 import app.novacode.myservices.widgets.CreateServiceDialog;
@@ -105,9 +106,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         Intent myServicesList = new Intent(this, ServiceInfo.class);
 
-
-
-
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -141,8 +139,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         });
 
 
-
-
         // Validation if is Seller or Client
         if( haveSavedData() ) {
 
@@ -161,10 +157,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             }
             Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
         }
-
-
-
-
 
         getBusiness();
 

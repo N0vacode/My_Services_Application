@@ -37,6 +37,8 @@ public class ServiceList extends AppCompatActivity {
     ArrayList<Integer> idAService = new ArrayList<>();
     ArrayList<Float> price = new ArrayList<>();
     ArrayList<String> specifications = new ArrayList<>();
+    ArrayList<String> contactService = new ArrayList<>();
+    ArrayList<String> nameService = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,11 @@ public class ServiceList extends AppCompatActivity {
         servicesListSeller = (ListView) findViewById(R.id.servicesListSeller);
 
 
-
-
-
-
         Intent backHome = new Intent(this, DashBoard.class);
+        Intent updateService = new Intent(this, ServiceUpdate.class);
+
+        initializeServicesdata(getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY));
+
 
         backButton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,27 +68,23 @@ public class ServiceList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(ServiceList.this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_LONG).show();
-                Toast.makeText(ServiceList.this, "Index: " + idAService.get(i), Toast.LENGTH_LONG).show();
+                updateService.putExtra(ConstantValues.SERVICE_ID_KEY, idAService.get(i));
+                updateService.putExtra(ConstantValues.BUSINESS_ID_KEY, getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY));
+                updateService.putExtra(ConstantValues.SERVICE_ABOUT_KEY, specifications.get(i));
+                updateService.putExtra(ConstantValues.SERVICE_CONTACT_KEY, contactService.get(i));
+                updateService.putExtra(ConstantValues.SERVICE_NAME_KEY, nameService.get(i));
+                updateService.putExtra(ConstantValues.SERVICE_PRICE_KEY, price.get(i));
 
+
+                startActivity(updateService);
 
             }
         });
 
-        initializeServicesdata(getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY));
-
 
     }
 
-
-
-
-
-
-
     protected void initializeServicesdata(String buinessId){
-
-
 
         Call<List<Services>> userRepositoryCall = ApiService.getUserService().getAllService(buinessId);
 
@@ -97,9 +95,6 @@ public class ServiceList extends AppCompatActivity {
             public void onResponse(Call<List<Services>> call, Response<List<Services>> response) {
 
                 try{
-
-
-
 
                     if(response.isSuccessful()){
 
@@ -112,20 +107,14 @@ public class ServiceList extends AppCompatActivity {
                             idAService.add(response.body().get(i).getIdService());
                             price.add(response.body().get(i).getPriceService());
                             specifications.add(response.body().get(i).getSpecializationService());
+                            contactService.add(response.body().get(i).getContactService());
+                            nameService.add(response.body().get(i).getNameService());
 
-
-//                            tittleService.add(response.body().get(i).getNameService());
-//                            infoService.add(response.body().get(i).getSpecializationService());
-//                            priceService.add(response.body().get(i).getPriceService());
                         }
 
 
                         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ServiceList.this,android.R.layout.simple_list_item_1, arrayList);
                         servicesListSeller.setAdapter(arrayAdapter);
-
-//
-//                        adapter = new RecyclerViewAdapter(ServiceInfo.this, tittleService, infoService, priceService);
-//                        recyclerView.setAdapter(adapter);
 
                     }
 
@@ -133,7 +122,6 @@ public class ServiceList extends AppCompatActivity {
                 }catch (Exception e){
 
                     System.out.println("Error: " + e.getMessage());
-                   // Toast.makeText(ServiceInfo.this, "This seller has not added services", Toast.LENGTH_SHORT).show();
 
                 }
 

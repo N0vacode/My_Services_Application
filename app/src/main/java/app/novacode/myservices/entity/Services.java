@@ -6,9 +6,14 @@
 package app.novacode.myservices.entity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import app.novacode.myservices.R;
+import app.novacode.myservices.pages.dashboard.DashBoard;
+import app.novacode.myservices.pages.specifications.ServiceList;
 import app.novacode.myservices.repository.BusinessRepository;
 import app.novacode.myservices.services.ApiService;
 import app.novacode.myservices.services.CrudService;
@@ -97,38 +102,74 @@ public class Services implements CrudService {
     }
 
     @Override
-    public void updateService(Services service) {
+    public void updateService(Services service, Context context) {
 
+        Intent servicesList = new Intent(context, DashBoard.class);
 
-    }
+        Call<Services> userRepositoryCall = ApiService.getUserService().updateService(service);
 
-    @Override
-    public void deleteService(int serviceCode) {
+        userRepositoryCall.enqueue(new Callback<Services>() {
 
+            @Override
+            public void onResponse(@NonNull Call<Services> call, @NonNull Response<Services> response) {
 
-    }
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, "Done!!", Toast.LENGTH_SHORT).show();
+                    context.startActivity(servicesList);
+                }else{
+                    Toast.makeText(context, "Could Not Create Service", Toast.LENGTH_SHORT).show();
+                }
 
-
-
-    public static Services[] ITEMS = {
-            new Services("Jaguar F-Type 2015", R.drawable.ic_art),
-            new Services("Mercedes AMG-GT", R.drawable.ic_services),
-            new Services("Mazda MX-5", R.drawable.ic_building),
-            new Services("Porsche 911 GTS", R.drawable.ic_electrical),
-            new Services("BMW Serie 6", R.drawable.ic_carpenter),
-            new Services("Ford Mondeo", R.drawable.ic_healt),
-    };
-
-    @Override
-    public Services getItem(int id) {
-        for (Services item : ITEMS) {
-            if (item.getIdService() == id) {
-                return item;
             }
-        }
-        return null;
+
+            @Override
+            public void onFailure(Call<Services> call, Throwable t) {
+                System.out.println(t);
+//                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+
     }
 
+    @Override
+    public void deleteService(int serviceCode, Context context) {
+
+
+
+        Intent servicesList = new Intent(context, DashBoard.class);
+
+        Call<Boolean> userRepositoryCall = ApiService.getUserService().deleteService(1);
+
+        userRepositoryCall.enqueue(new Callback<Boolean>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, "Done!!", Toast.LENGTH_SHORT).show();
+                    context.startActivity(servicesList);
+                }else{
+                    Toast.makeText(context, "Could Not Delete Service", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Boolean> call, @NonNull Throwable t) {
+                System.out.println(t);
+//                Toast.makeText(context, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
+
+
+
+    }
 
 
 
@@ -189,11 +230,4 @@ public class Services implements CrudService {
         this.idDrawable = idDrawable;
     }
 
-    public static Services[] getITEMS() {
-        return ITEMS;
-    }
-
-    public static void setITEMS(Services[] ITEMS) {
-        Services.ITEMS = ITEMS;
-    }
 }

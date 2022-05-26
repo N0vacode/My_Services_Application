@@ -13,9 +13,8 @@ import app.novacode.myservices.entity.Services;
 public interface CrudService {
 
     public void createService(Services service, Context context);
-    public void updateService(Services service);
-    public void deleteService(int serviceCode);
-    public Services getItem(int id);
+    public void updateService(Services service, Context context);
+    public void deleteService(int serviceCode, Context context);
 
 
 }

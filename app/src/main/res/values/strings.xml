@@ -32,6 +32,8 @@
     <string name="price">PRICE</string>
     <string name="search">Search</string>
     <string name="new_service">New Service</string>
+    <string name="update_service">Update Service</string>
+    <string name="update">Update</string>
 
 
     <string-array name="rol_user">

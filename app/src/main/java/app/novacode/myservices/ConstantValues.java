@@ -15,6 +15,7 @@ public class ConstantValues {
     public final static String PATH_SIGNUP_CLIENT = "user/body";
     public final static String PATH_SIGNUP_BUSINESS = "business";
     public final static String PATH_SIGNUP_SERVICES = "service";
+    public final static String PATH_DELETE_SERVICES = "service/{id}";
     public final static String PATH_GET_BUSINESS = "business/all";
     public final static String PATH_GET_SERVICE = "service/business/{businessId}";
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
@@ -49,6 +50,17 @@ public class ConstantValues {
     public final static String BUSINESS_ID_KEY = "businessId";
     public final static String BUSINESS_RATE_KEY = "rate";
     public final static String BUSINESS_SELLER_DATA_KEY = "sellerData";
+
+
+    // Value key Service
+    public final static String SERVICE_CONTACT_KEY = "contactService";
+    public final static String SERVICE_ABOUT_KEY = "specializationService";
+    public final static String SERVICE_PRICE_KEY = "priceService";
+    public final static String SERVICE_NAME_KEY = "nameService";
+    public final static String SERVICE_ID_KEY = "idService";
+
+
+
 
 
 
