@@ -12,19 +12,15 @@ import java.util.Map;
 import app.novacode.myservices.ConstantValues;
 import app.novacode.myservices.entity.CodesValidator;
 import app.novacode.myservices.entity.Rating;
-import app.novacode.myservices.entity.Seller;
 import app.novacode.myservices.entity.Services;
-import app.novacode.myservices.pages.recovery.CodeValidator;
 import app.novacode.myservices.repository.BusinessRepository;
 import app.novacode.myservices.repository.UserRepository;
-import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ServiceController {
