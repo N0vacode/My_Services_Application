@@ -1,5 +1,5 @@
 /*
- * Copyright (c) $2019 NovaCode All Rights Reserved
+ * Copyright (c) $2019 NativeCode All Rights Reserved
  * This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
  */
 
@@ -18,6 +18,7 @@ public class ConstantValues {
     public final static String PATH_DELETE_SERVICES = "service/{id}";
     public final static String PATH_GET_BUSINESS = "business/all";
     public final static String PATH_GET_BUSINESS_BY_NAME = "business/name/{bName}";
+    public final static String PATH_GET_BUSINESS_BY_AREA = "business/area/{a}";
     public final static String PATH_GET_SERVICE = "service/business/{businessId}";
     public final static String PATH_GET_EMAIL = "user/account/{mail}";
     public final static String PATH_EXIST_MAIL = "user/validate/{mail}";

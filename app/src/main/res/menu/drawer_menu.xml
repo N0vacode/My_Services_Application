@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) $2019 NovaCode All Rights Reserved
+  ~ Copyright (c) $2019 NativeCode All Rights Reserved
   ~ This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
   -->
 
@@ -15,63 +15,63 @@
 
             <item
                 android:id="@+id/carpentry"
-                android:title="Carpentry"
+                android:title="@string/carpentry"
                 android:icon="@drawable/ic_carpenter">
 
             </item>
             <item
                 android:id="@+id/plumbing"
-                android:title="Plumbing"
+                android:title="@string/plumbing"
                 android:icon="@drawable/ic_plumbing">
 
             </item>
             <item
                 android:id="@+id/electricity"
-                android:title="Electricity"
+                android:title="@string/electricity"
                 android:icon="@drawable/ic_electrical">
 
             </item>
             <item
                 android:id="@+id/electronics"
-                android:title="Electronics"
+                android:title="@string/electronics"
                 android:icon="@drawable/ic_electronic">
 
             </item>
             <item
-                android:id="@+id/brasswork"
-                android:title="Brasswork"
+                android:id="@+id/bodywork"
+                android:title="@string/bodywork"
                 android:icon="@drawable/ic_brasswork">
 
             </item>
             <item
                 android:id="@+id/building"
-                android:title="Building"
+                android:title="@string/building"
                 android:icon="@drawable/ic_building">
 
             </item>
             <item
                 android:id="@+id/mechanics"
-                android:title="Mechanics"
+                android:title="@string/mechanics"
                 android:icon="@drawable/ic_mechanics">
 
             </item>
             <item
                 android:id="@+id/technology"
-                android:title="Technology"
+                android:title="@string/technology"
                 android:icon="@drawable/ic_tech"
                 >
 
             </item>
             <item
                 android:id="@+id/health"
-                android:title="Health"
+                android:title="@string/health"
                 android:icon="@drawable/ic_healt"
                 >
 
             </item>
             <item
                 android:id="@+id/fashion"
-                android:title="Fashion"
+                android:title="@string/fashion"
                 android:icon="@drawable/ic_fashion"
                 >
 
@@ -79,7 +79,7 @@
 
             <item
                 android:id="@+id/art"
-                android:title="Art"
+                android:title="@string/art"
                 android:icon="@drawable/ic_art"
                 >
 
@@ -87,7 +87,7 @@
 
             <item
                 android:id="@+id/other"
-                android:title="Others"
+                android:title="@string/others"
                 android:icon="@drawable/ic_art"
                 >
 
@@ -99,14 +99,14 @@
 
 
     <item
-        android:title="SERVICES"
+        android:title="@string/services"
         android:id="@+id/services">
 
         <menu>
 
             <item
                 android:id="@+id/myServices"
-                android:title="My Services"
+                android:title="@string/my_services"
                 android:icon="@drawable/ic_services"
                 />
 

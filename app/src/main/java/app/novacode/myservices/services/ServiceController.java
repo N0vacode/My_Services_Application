@@ -1,5 +1,5 @@
 /*
- * Copyright (c) $2019 NovaCode All Rights Reserved
+ * Copyright (c) $2019 NativeCode All Rights Reserved
  * This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
  */
 
@@ -71,6 +71,9 @@ public interface ServiceController {
 
     @GET(ConstantValues.PATH_GET_BUSINESS_BY_NAME)
     Call<List<BusinessRepository>> getBusinessDataByName(@Path("bName") String name);
+
+    @GET(ConstantValues.PATH_GET_BUSINESS_BY_AREA)
+    Call<List<BusinessRepository>> getBusinessDataByArea(@Path("a") String area);
 
 
 

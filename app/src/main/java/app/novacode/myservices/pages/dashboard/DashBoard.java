@@ -1,5 +1,5 @@
 /*
- * Copyright (c) $2019 NovaCode All Rights Reserved
+ * Copyright (c) $2019 NativeCode All Rights Reserved
  * This product is protected by copyright and distributed under licenses restricting copying,distribution, and decompilation.
  */
 
@@ -159,7 +159,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
         }
 
-        getBusiness();
+        getBusiness("all",null);
 
 
 
@@ -170,12 +170,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
 
                 //Cleanin Values
-                serviceName.clear();
-                image.clear();
-                rate.clear();
+                cleanData();
 
-
-                getBusiness();
+                getBusiness("id", search.getText().toString() );
 
             }
 
@@ -200,23 +197,49 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         Intent myServicesList = new Intent(DashBoard.this, ServiceList.class);
         myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, myBID);
         myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, getIntent().getStringExtra(ConstantValues.USER_MAIL_KEY));
+
         switch(item.getItemId()){
 
+            case R.id.carpentry:
+                filterByMenu(R.string.carpentry);
+                break;
+            case R.id.plumbing:
+                filterByMenu(R.string.plumbing);
+                break;
+            case R.id.electricity:
+                filterByMenu(R.string.electricity);
+                break;
+            case R.id.electronics:
+                filterByMenu(R.string.electronics);
+                break;
+            case R.id.bodywork:
+                filterByMenu(R.string.bodywork);
+                break;
+            case R.id.building:
+                filterByMenu(R.string.building);
+                break;
+            case R.id.mechanics:
+                filterByMenu(R.string.mechanics);
+                break;
+            case R.id.technology:
+                filterByMenu(R.string.technology);
+            case R.id.health:
+                filterByMenu(R.string.health);
+                break;
+            case R.id.fashion:
+                filterByMenu(R.string.fashion);
+                break;
+            case R.id.other:
+                filterByMenu(R.string.others);
+                break;
             case R.id.newService:
-
                 createNewService();
-
                 break;
-
             case R.id.myServices:
-
                 startActivity(myServicesList);
-
                 break;
 
-            default:
         }
-
 
         return false;
 
@@ -252,18 +275,31 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     }
 
-    private void getBusiness(){
+    private void getBusiness(String type, String name){
 
-        Call<List<BusinessRepository>> userRepositoryCall;
+        serviceName.clear();
+        image.clear();
+        rate.clear();
 
-        if( search.getText().toString().isEmpty() ){
+        Call<List<BusinessRepository>> userRepositoryCall = null;
 
-            userRepositoryCall = ApiService.getUserService().getBusinessData();
+        if( !type.equals("t") ) {
 
-        }else {
+            if (search.getText().toString().isEmpty() && type.equals("all")) {
 
-            userRepositoryCall = ApiService.getUserService().getBusinessDataByName( search.getText().toString() );
+                userRepositoryCall = ApiService.getUserService().getBusinessData();
+
+            } else if (type.equals("id")) {
+                userRepositoryCall = ApiService.getUserService().getBusinessDataByName(name);
+
+            }
+        }else{
+
+                userRepositoryCall = ApiService.getUserService().getBusinessDataByArea(name);
+
         }
+
+        assert userRepositoryCall != null;
         userRepositoryCall.enqueue(new Callback<List<BusinessRepository>>() {
 
 
@@ -309,9 +345,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
                         servicesList.setAdapter(gridAdapter);
 
-                        if(response.body().isEmpty())
-                            Toast.makeText(DashBoard.this, "No Matches for: " + search.getText().toString(), Toast.LENGTH_SHORT).show();
-
 //                        gridAdapter = new GridAdapter();
 //                        servicesList.setAdapter(gridAdapter);
 
@@ -345,6 +378,24 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     }
 
+
+
+    protected void cleanData(){
+        serviceName.clear();
+        image.clear();
+        rate.clear();
+    }
+
+
+    protected void filterByMenu(int value){
+
+        serviceName.clear();
+        image.clear();
+        rate.clear();
+
+
+        getBusiness("t", DashBoard.this.getString(value));
+    }
 
 }
 

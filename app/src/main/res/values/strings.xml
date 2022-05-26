@@ -20,9 +20,8 @@
     <string name="validate_code">VALIDATE CODE</string>
     <string name="code">CODE:</string>
     <string name="change_password">GO!</string>
-
     <string name="nex_step">Next —></string>
-    <string name="dev_nick">Dev. Novacode</string>
+    <string name="dev_nick">Dev. NativeCode - Release V. 1.0 2022</string>
     <string name="principal">Principal</string>
     <string name="home">home</string>
     <string name="close">close</string>
@@ -34,6 +33,22 @@
     <string name="new_service">New Service</string>
     <string name="update_service">Update Service</string>
     <string name="update">Update</string>
+
+
+    <string name="carpentry">Carpentry</string>
+    <string name="plumbing">Plumbing</string>
+    <string name="electricity">Electricity</string>
+    <string name="electronics">Electronics</string>
+    <string name="bodywork">Bodywork</string>
+    <string name="building">Building</string>
+    <string name="mechanics">Mechanics</string>
+    <string name="technology">Technology</string>
+    <string name="health">Health</string>
+    <string name="fashion">Fashion</string>
+    <string name="art">Art</string>
+    <string name="others">Others</string>
+    <string name="my_services">My Services</string>
+    <string name="services">SERVICES</string>
 
 
     <string-array name="rol_user">
@@ -70,7 +85,7 @@
         <item>Plumbing</item>
         <item>Electricity</item>
         <item>Electronics</item>
-        <item>Metalwork</item>
+        <item>Bodywork</item>
         <item>Building</item>
         <item>Mechanics</item>
         <item>Technology</item>
