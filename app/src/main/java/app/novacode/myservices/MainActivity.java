@@ -21,11 +21,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import app.novacode.myservices.adapter.Validation;
 import app.novacode.myservices.pages.recovery.PasswordRecovery;
 import app.novacode.myservices.pages.signup.SignUp;
-import app.novacode.myservices.pages.signup.SignUpSellerBusiness;
 import app.novacode.myservices.services.Login;
 import app.novacode.myservices.services.MD5C;
 
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
         userPreferences = this.getPreferences(Context.MODE_PRIVATE);
         editor = userPreferences.edit();
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if( haveSavedData() ) {
+        if( userPreferences.getBoolean(ConstantValues.SAVED_DATA_USER, false) ) {
 
             Login.user(MainActivity.this, userPreferences.getString(ConstantValues.USER_MAIL_KEY, ConstantValues.USER_MAIL_KEY),
                     userPreferences.getString(ConstantValues.USER_PASS_KEY, ConstantValues.USER_PASS_KEY));
@@ -144,9 +142,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    protected boolean haveSavedData(){
-
-        return this.userPreferences.getBoolean(ConstantValues.SAVED_DATA_USER, false);
-    }
 
 }

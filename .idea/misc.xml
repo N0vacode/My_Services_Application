@@ -15,9 +15,26 @@
         <entry key="app/src/main/res/drawable/dev_information.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/edittext_theme.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_add_rating.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/ic_art.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_brasswork.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_building.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_carpenter.xml" value="0.1075" />
+        <entry key="app/src/main/res/drawable/ic_contect_phone.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_delete_item.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_electrical.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_electronic.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_fashion.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_healt.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/ic_mail_contact.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_mechanics.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_my_search.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_new_service.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_plumbing.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_services.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_tech.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_web_site.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/list_rol_users.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rating_bar.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/rectangle_decorator_button.xml" value="0.1345" />

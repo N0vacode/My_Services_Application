@@ -4,7 +4,7 @@
     <gradient
         android:startColor="@color/white"
         android:endColor="@color/main_icon_background_green"
-        android:angle="40"/>
+        android:angle="45"/>
 
     <padding
         android:left="2dp"
