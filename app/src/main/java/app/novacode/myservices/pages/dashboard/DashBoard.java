@@ -114,23 +114,19 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 String userMail = userPreferences.getString(ConstantValues.USER_MAIL_KEY, ConstantValues.USER_MAIL_KEY);
 
                 view.setSelected(true);
-                final String idBusiness = codeService.get(i);
-                final double rateBusiness = rate.get(i);
-                final String nameBusiness = serviceName.get(i);
-                final String imageBusiness = image.get(i);
-                final String aboutBusiness = aboutB.get(i);
-                final String websiteBusiness = websiteB.get(i);
 
-                myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, idBusiness);
-                myServicesList.putExtra(ConstantValues.BUSINESS_RATE_KEY, rateBusiness);
-                myServicesList.putExtra(ConstantValues.BUSINESS_NAME_KEY, nameBusiness);
-                myServicesList.putExtra(ConstantValues.BUSINESS_IMAGE_KEY, imageBusiness);
-                myServicesList.putExtra(ConstantValues.BUSINESS_ABOUT_KEY, aboutBusiness);
-                myServicesList.putExtra(ConstantValues.BUSINESS_WEBSITE_KEY, websiteBusiness);
+                myServicesList.putExtra(ConstantValues.BUSINESS_ID_KEY, codeService.get(i));
+                myServicesList.putExtra(ConstantValues.BUSINESS_RATE_KEY, rate.get(i));
+                myServicesList.putExtra(ConstantValues.BUSINESS_NAME_KEY, serviceName.get(i));
+                myServicesList.putExtra(ConstantValues.BUSINESS_IMAGE_KEY, image.get(i));
+                myServicesList.putExtra(ConstantValues.BUSINESS_ABOUT_KEY, aboutB.get(i));
+                myServicesList.putExtra(ConstantValues.BUSINESS_WEBSITE_KEY, websiteB.get(i));
                 myServicesList.putExtra(ConstantValues.USER_PHONE_KEY,phoneB.get(i));
                 myServicesList.putExtra(ConstantValues.USER_MAIL_KEY, myMail.get(i));
                 myServicesList.putExtra(ConstantValues.USER_CITY_KEY, cityB.get(i));
                 myServicesList.putExtra(ConstantValues.CLIENT_MAIL_KEY, userMail);
+
+
 
                 startActivity(myServicesList);
 
@@ -147,7 +143,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 navigationView.getMenu().findItem(R.id.services).setVisible(false);
             }
 
-            Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
 
         }else{
 
@@ -156,7 +151,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             if(getIntent().getStringExtra(ConstantValues.USER_ROL_KEY).equals("Client")) {
                 navigationView.getMenu().findItem(R.id.services).setVisible(false);
             }
-            Toast.makeText(this, userPreferences.getString(ConstantValues.USER_FNAME_KEY,"Client"), Toast.LENGTH_SHORT).show();
         }
 
         getBusiness("all",null);
@@ -309,10 +303,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 try{
 
 
-
                     if(response.isSuccessful()){
-
-
 
 
 
@@ -332,7 +323,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
                             if(Integer.parseInt(String.valueOf(response.body().get(i).getSellerId())) ==  Integer.parseInt(userPreferences.getString(ConstantValues.USER_ID_KEY, ConstantValues.USER_ID_KEY))){
                                 myBID = response.body().get(i).getBusinessId();
-
                                 editor.putString(ConstantValues.BUSINESS_ID_KEY, response.body().get(i).getBusinessId());
                             }
 
@@ -341,13 +331,11 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         }
 
 
-
                         gridAdapter = new GridAdapter(DashBoard.this,serviceName,image, rate);
                         servicesList.setAdapter(gridAdapter);
 
 //                        gridAdapter = new GridAdapter();
 //                        servicesList.setAdapter(gridAdapter);
-
 
 
                     }
@@ -371,13 +359,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         });
 
-
-
-
-
-
     }
-
 
 
     protected void cleanData(){

@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                msmChangedActivity = "Please Insert Data";
-                Toast.makeText(MainActivity.this,msmChangedActivity,Toast.LENGTH_LONG).show();
                 startActivity(signUpIntent);
 
             }

@@ -104,9 +104,10 @@ public class AlertMsm  extends DialogFragment {
                 ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                     @Override
                     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
                         newRating.setRate(rating);
 
-                        Toast.makeText(getContext(), "Rating: " + rating, Toast.LENGTH_SHORT).show();
+
 
 
                     }

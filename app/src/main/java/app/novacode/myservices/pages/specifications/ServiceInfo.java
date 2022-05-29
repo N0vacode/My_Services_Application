@@ -63,8 +63,10 @@ public class ServiceInfo extends AppCompatActivity {
     ArrayList<String> infoService = new ArrayList<>();
     ArrayList<Float> priceService = new ArrayList<>();
 
+
     RecyclerView recyclerView;
     LinearLayoutManager horizontalLayoutManager;
+    String mail = "";
 
     private RecyclerViewAdapter adapter;
 
@@ -141,10 +143,11 @@ public class ServiceInfo extends AppCompatActivity {
 
 
         String phoneNumber = getIntent().getExtras().getString(ConstantValues.USER_PHONE_KEY);
-        String sellerMail = getIntent().getExtras().getString(ConstantValues.USER_MAIL_KEY).toLowerCase();
         String cityBusiness = getIntent().getExtras().getString(ConstantValues.USER_CITY_KEY);
         String website = getIntent().getExtras().getString(ConstantValues.BUSINESS_WEBSITE_KEY).toLowerCase();
         String businessId = getIntent().getExtras().getString(ConstantValues.BUSINESS_ID_KEY);
+        String mailBusiness = getIntent().getExtras().getString(ConstantValues.USER_MAIL_KEY);
+
         initializeServicesdata(businessId);
 
         Glide.with(this)
@@ -170,7 +173,7 @@ public class ServiceInfo extends AppCompatActivity {
         });
 
         phoneB.setText(phoneNumber);
-        mailB.setText(sellerMail);
+
         cityB.setText(cityBusiness);
 
 
@@ -204,6 +207,7 @@ public class ServiceInfo extends AppCompatActivity {
 
                     if(response.isSuccessful()){
 
+                        String mailSeller = "";
 
 
                         for (int i = 0; i < response.body().size(); i++) {
@@ -212,9 +216,11 @@ public class ServiceInfo extends AppCompatActivity {
                             tittleService.add(response.body().get(i).getNameService());
                             infoService.add(response.body().get(i).getSpecializationService());
                             priceService.add(response.body().get(i).getPriceService());
+                            mailSeller = response.body().get(i).getContactService();
                         }
 
 
+                        mailB.setText(mailSeller);
 
                         adapter = new RecyclerViewAdapter(ServiceInfo.this, tittleService, infoService, priceService);
                         recyclerView.setAdapter(adapter);
